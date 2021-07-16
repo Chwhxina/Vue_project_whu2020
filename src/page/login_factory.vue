@@ -13,19 +13,20 @@
                             <el-col :span="6" type="flex"><router-link to="/login_gov"><div class="grid-content bg-purple">政府</div></router-link></el-col>
                         </el-row>
 
-                        <el-form :model="loginForm" :rules="rules" ref="loginForm">
-                            <el-form-item prop="username"  >
-                                <el-input v-model="loginForm.username" placeholder="用户名"><span>dsfsf</span></el-input>
-                            </el-form-item>
-                            <el-form-item prop="password">
-                                <el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
-                            </el-form-item>
-                        </el-form>
-                    </section>
-                </transition>
+                <el-form :model="loginForm" :rules="rules" ref="loginForm">
+                    <el-form-item prop="username"  >
+                        <el-input v-model="loginForm.username" placeholder="用户名"><span>dsfsf</span></el-input>
+                    </el-form-item>
+                    <el-form-item prop="password">
+                        <el-input type="password" placeholder="密码" v-model="loginForm.password"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
+                    </el-form-item>
+                    <p><router-link to="/register">注册</router-link></p>
+                </el-form>
+            </section>
+        </transition>
             </el-main>
         </el-container>
     </div>
@@ -111,8 +112,8 @@ export default {
     }
 }
 .form_contianer{
-    .wh(350px, 220px);
-    .ctp(-500px, 220px);
+    .wh(350px, 250px);
+    .ctp(-500px, 250px);
     padding: 25px;
     border-radius: 5px;
     text-align: center;
