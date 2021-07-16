@@ -4,7 +4,7 @@ import { baseAxios } from '@/utils/axios'
  * 登陆
  */
 export const login = (data) => {
-	return baseAxios.post('/api/auth/login', data).then(result => {
+	return baseAxios.post('/api/auth/login/all', data).then(result => {
 		return result.data
 	})
 }
