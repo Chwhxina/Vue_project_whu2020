@@ -40,11 +40,11 @@ export default {
     data(){
         return {
             loginForm: {
-                username: '',
+                account: '',
                 password: '',
             },
             rules: {
-                username: [
+                account: [
                     { required: true, message: '请输入用户名', trigger: 'blur' },
                 ],
                 password: [
@@ -67,13 +67,13 @@ export default {
                 if (valid) {
                     login({name: this.loginForm.username, password: this.loginForm.password})
                         .then(res => {
-                            if (res.rspCode == '000000') {
+                            if (res.rspCode == '0') {
                                 this.$message({
                                     type: 'success',
                                     message: '登录成功'
                                 });
-                                console.log(res.rspData.token);
-                                _this.changeLogin({ Authorization: res.rspData.token});
+                                console.log(res.data.token);
+                                _this.changeLogin({ Authorization: res.data.token});
                                 this.$router.push('home');
                             } else {
                                 this.$message({

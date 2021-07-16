@@ -97,7 +97,7 @@ const router = new Router({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/') {
+  if (to.path === '/'||'/home') {
     next();
   } else {
     let token = localStorage.getItem('Authorization');

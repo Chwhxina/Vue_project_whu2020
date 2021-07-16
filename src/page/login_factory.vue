@@ -9,8 +9,8 @@
                         </div>
                         <el-row :gutter="5">
                             <el-col :span="6" type="flex" ><router-link to="/"><div class="grid-content bg-purple">用户</div></router-link></el-col>
-                            <el-col :span="6" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple-dark">工厂</div></router-link></el-col>
-                            <el-col :span="12" type="flex"><router-link to="/login_gov"><div class="grid-content bg-purple">政府</div></router-link></el-col>
+                            <el-col :span="12" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple-dark">工厂</div></router-link></el-col>
+                            <el-col :span="6" type="flex"><router-link to="/login_gov"><div class="grid-content bg-purple">政府</div></router-link></el-col>
                         </el-row>
 
                         <el-form :model="loginForm" :rules="rules" ref="loginForm">
@@ -67,7 +67,7 @@ export default {
                 if (valid) {
                     login({name: this.loginForm.username, password: this.loginForm.password})
                         .then(res => {
-                            if (res.rspCode == '000000') {
+                            if (res.rspCode == '0') {
                                 this.$message({
                                     type: 'success',
                                     message: '登录成功'
