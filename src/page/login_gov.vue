@@ -1,24 +1,6 @@
 <template>
     <div class="login_page fillcontain">
         <el-container>
-            <el-header>
-                <el-row :gutter="20">
-                <el-col :span="6"><div class="grid-content bg-purple"><template>
-                    <el-select v-model="value" placeholder="请选择">
-                        <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                        </el-option>
-                    </el-select>
-                </template>
-                </div></el-col>
-                <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-                <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-                <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-            </el-row>
-            </el-header>
             <el-main>
         <transition name="form-fade" mode="in-out">
             <section class="form_contianer" v-show="showLogin">
