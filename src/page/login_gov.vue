@@ -1,14 +1,12 @@
 <template>
     <div class="login_page fillcontain">
-        <el-container>
-            <el-main>
         <transition name="form-fade" mode="in-out">
             <section class="form_contianer" v-show="showLogin">
                 <div class="manage_tip" style="opacity: initial">
                     <p>武大蚂蚁链食品朔源系统</p>
                 </div>
                 <el-row :gutter="5">
-                    <el-col :span="6" type="flex" ><router-link to="/"><div class="grid-content bg-purple">用户</div></router-link></el-col>
+                    <el-col :span="6" type="flex" ><router-link to="/"><div class="grid-content bg-purple">访客</div></router-link></el-col>
                     <el-col :span="6" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple">工厂</div></router-link></el-col>
                     <el-col :span="12" type="flex"><div class="grid-content bg-purple-dark">政府</div></el-col>
                 </el-row>
@@ -23,11 +21,10 @@
                     <el-form-item>
                         <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
                     </el-form-item>
+                    <p><router-link to="/register">注册</router-link></p>
                 </el-form>
             </section>
         </transition>
-            </el-main>
-        </el-container>
     </div>
 </template>
 
@@ -95,6 +92,7 @@ export default {
     }
 }
 </script>
+
 <style lang="less" scoped>
 @import '../style/mixin';
 .login_page{
@@ -149,16 +147,5 @@ export default {
 .grid-content {
     border-radius: 4px;
     min-height: 36px;
-}
-.el-row {
-    margin-bottom: 20px;
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
 }
 </style>
