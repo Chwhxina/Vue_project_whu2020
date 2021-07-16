@@ -10,7 +10,7 @@
                         <el-row :gutter="5">
                             <el-col :span="12" type="flex" ><router-link to="/"><div class="grid-content bg-purple-dark">用户</div></router-link></el-col>
                             <el-col :span="6" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple">工厂</div></router-link></el-col>
-                            <el-col :span="6" type="flex"><div class="grid-content bg-purple">政府</div></el-col>
+                            <el-col :span="6" type="flex"><router-link to="/login_factory"><div class="grid-content bg-purple">政府</div></router-link></el-col>
                         </el-row>
 
                         <el-form :model="loginForm" :rules="rules" ref="loginForm">
