@@ -4,11 +4,16 @@ import { baseAxios } from '@/utils/axios'
  * 登陆
  */
 export const login = (data) => {
-	return baseAxios.post('/api/auth/login/', data).then(result => {
+	return baseAxios.post('/api/auth/login', data).then(result => {
 		return result.data
 	})
 }
 
+/**
+ * 注册(新增)
+ */
+
+export const register = data => fetch('/api/auth/register', data, 'PUT');
 
 /**
  * 朔源物品统计

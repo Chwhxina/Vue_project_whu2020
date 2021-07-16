@@ -5,9 +5,13 @@ import {getStore,setStore} from '@/config/mUtils'
 
 Vue.use(Router)
 
+/* 登录 & 注册 */
 const login = r => require.ensure([], () => r(require('@/page/login')), 'login');
 const login_factory = r => require.ensure([], () => r(require('@/page/login_factory')), 'factory');
 const login_gov = r => require.ensure([], () => r(require('@/page/login_gov')), 'login_gov');
+const register = r => require.ensure([], () => r(require('@/page/register')), 'register');
+
+/* 主页 */
 const dashboard = r => require.ensure([], () => r(require('@/page/dashboard')), 'dashboard');
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home');
 const attributeList = r => require.ensure([], () => r(require('@/page/attributeList')), 'attributeList');
@@ -28,12 +32,20 @@ const routes = [
 		component: login
 	},
     {
+		path: '/login',
+		component: login
+	},
+    {
         path: '/login_factory',
         component: login_factory
     },
     {
         path: '/login_gov',
         component: login_gov
+    },
+    {
+        path: '/register',
+		component: register
     },
 	{
 		path: '/home',
@@ -97,12 +109,12 @@ const router = new Router({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/'||'/home') {
+  if (to.path === '/' || to.path === '/login' || to.path === '/login_factory' || to.path === '/login_gov' || to.path === '/register') {
     next();
   } else {
     let token = localStorage.getItem('Authorization');
     if (token === 'null' || token === '') {
-      next('/');
+      next('/login');
     } else {
       next();
     }
