@@ -7,7 +7,7 @@
                 </div>
 
 		    	<el-form :model="registerForm" :rules="rules" ref="registerForm">
-					<el-form-item prop="username"  >
+					<el-form-item prop="username">
 						<el-input placeholder="用户名" v-model="registerForm.username"><span></span></el-input>
 					</el-form-item>
 					<el-form-item prop="password">
@@ -16,10 +16,10 @@
                     <el-form-item prop="confirm">
 						<el-input type="password" placeholder="确认密码" v-model="registerForm.confirm"></el-input>
 					</el-form-item>
-                    <el-form-item prop="realname"  >
+                    <el-form-item prop="realname">
 						<el-input placeholder="姓名" v-model="registerForm.realname"><span></span></el-input>
 					</el-form-item>
-                    <el-form-item prop="address"  >
+                    <el-form-item prop="address">
 						<el-input placeholder="地址" v-model="registerForm.address"><span></span></el-input>
 					</el-form-item>
 					<el-form-item>
@@ -33,94 +33,89 @@
 </template>
 
 <script>
-	import {register} from '@/api/getData'
-	import {mapActions, mapState} from 'vuex'
-	import {mapMutations} from 'vuex';
+import {register} from '@/api/getData'
+import {mapActions, mapState} from 'vuex'
+import {mapMutations} from 'vuex';
 
-	export default {
-	    data(){
-			return {
-				registerForm: {
-					username: '',
-					password: '',
-                    comfirm:  '',
-                    realname: '',
-                    address:  '',
-				},
-				rules: {
-					username: [
-			            { required: true, message: '请输入用户名', trigger: 'blur' },
-			        ],
-					password: [
-						{ required: true, message: '请输入密码', trigger: 'blur' }
-					],
-                    comfirm:  [
-			            { required: true, message: '请再次输入密码', trigger: 'blur' }, 
-                        { 
-                            validator: (rule, value, callback) => {
-                                if (value === '') {
-                                    callback(new Error('请再次输入密码'))
-                                }
-                                else if (value !== this.registerForm.password) {
-                                    callback(new Error('两次输入密码不一致'))
-                                }
-                                else {
-                                    callback()
-                                }
-                            },
-                            trigger:'blur'
+export default {
+    data(){
+        var validatePass = (rule, value, callback) => {
+            if (value !== this.registerForm.password) {
+                callback(new Error('两次输入密码不一致!'));
+            } 
+            else {
+                callback();
+            }
+        };
+        return {
+            registerForm: {
+                username: '',
+                password: '',
+                confirm:  '',
+                realname: '',
+                address:  '',
+            },
+            rules: {
+                username: [
+                    { required: true, message: '请输入用户名', trigger: 'blur' },
+                ],
+                password: [
+                    { required: true, message: '请输入密码', trigger: 'blur' }
+                ],
+                confirm:  [
+                    { required: true, message: '请再次输入密码', trigger: 'blur' }, 
+                    { validator: validatePass, trigger: "blur" }
+                ],
+                realname: [
+                    { required: true, message: '请输入姓名', trigger: 'blur' }
+                ],
+                address:  [
+                    { required: true, message: '请输入地址', trigger: 'blur' }
+                ],
+            },
+            showRegister: false,
+        }
+    },
+    mounted(){
+        this.showRegister = true;
+    },
+    computed: {
+    },
+    methods: {
+        //...mapMutations(['changeLogin']),
+        async submitForm(formName) {
+            let _this = this;
+            this.$refs[formName].validate(async (valid) => {
+                if (valid) {
+                    register({name: this.registerForm.username, password: this.registerForm.password, realname: this.registerForm.realname, address: this.registerForm.address})
+                    .then(res => {
+                        if (res.rspCode == '000000') {
+                                this.$message({
+                                type: 'success',
+                                message: '登录成功'
+                            });
+                            console.log(res.rspData.token);
+                            //_this.changeLogin({ Authorization: res.rspData.token});
+                            //this.$router.push('login');
+                        } else {
+                            this.$message({
+                                type: 'error',
+                                message: res.rspMsg
+                            });
                         }
-			        ],
-					realname: [
-						{ required: true, message: '请输入姓名', trigger: 'blur' }
-					],
-                    address:  [
-						{ required: true, message: '请输入地址', trigger: 'blur' }
-					],
-				},
-				showRegister: false,
-			}
-		},
-		mounted(){
-			this.showRegister = true;
-		},
-		computed: {
-		},
-		methods: {
-			//...mapMutations(['changeLogin']),
-			async submitForm(formName) {
-				let _this = this;
-				this.$refs[formName].validate(async (valid) => {
-					if (valid) {
-						register({name: this.registerForm.username, password: this.registerForm.password, realname: this.registerForm.realname, address: this.registerForm.address})
-						.then(res => {
-							if (res.rspCode == '000000') {
-									this.$message({
-		                        	type: 'success',
-		                        	message: '登录成功'
-		                    	});
-		                    	console.log(res.rspData.token);
-		                    	//_this.changeLogin({ Authorization: res.rspData.token});
-								//this.$router.push('login');
-							} else {
-								this.$message({
-		                        	type: 'error',
-		                        	message: res.rspMsg
-		                    	});
-							}
-						});
-					} else {
-						this.$notify.error({
-							title: '错误',
-							message: '请输入正确的用户名密码',
-							offset: 100
-						});
-						return false;
-					}
-				});
-			},
-		}
-	}
+                    });
+                } else {
+                    this.$notify.error({
+                        title: '错误',
+                        message: '请输入正确的用户名密码',
+                        offset: 100
+                    });
+                    return false;
+                }
+            });
+        },
+    }
+}
 </script>
 
 <style lang="less" scoped>
