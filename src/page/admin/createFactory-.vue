@@ -37,7 +37,7 @@
 
 <script>
 /* 创建控件(工厂创建) */
-    import headTop from '../../components/headTop'
+    import headTop from '../components/headTop'
     import {createFactory} from '@/api/getData'
     export default {
         data() {
@@ -121,7 +121,7 @@
 </script>
 
 <style lang="less">
-	@import '../../style/mixin';
+	@import '../style/mixin';
     .table_container{
         padding: 20px;
         .wh(1220px, 600px);

@@ -37,7 +37,7 @@
 
 <script>
 /* 创建控件模板(政府创建) */
-    import headTop from '../components/headTop'
+    import headTop from '../../components/headTop'
     import {createGovernment} from '@/api/getData'
     export default {
         data() {
@@ -121,7 +121,7 @@
 </script>
 
 <style lang="less">
-	@import '../style/mixin';
+	@import '../../style/mixin';
     .table_container{
         padding: 20px;
         .wh(1220px, 600px);

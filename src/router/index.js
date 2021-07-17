@@ -22,18 +22,33 @@ const messageList = r => require.ensure([], () => r(require('@/page/messageList'
 const addMessage = r => require.ensure([], () => r(require('@/page/addMessage')), 'addMessage');
 const explain = r => require.ensure([], () => r(require('@/page/explain')), 'explain');
 
-const creditQuery = r => require.ensure([], () => r(require('@/page/creditQuery')), 'creditQuery');
+//const creditQuery = r => require.ensure([], () => r(require('@/page/creditQuery')), 'creditQuery');
 const transferCredit = r => require.ensure([], () => r(require('@/page/transferCredit')), 'transferCredit');
 const issueCredit = r => require.ensure([], () => r(require('@/page/issueCredit')), 'issueCredit');
 
+/* 模型测试 */
 const queryModel = r => require.ensure([], () => r(require('@/page/queryModel')), 'queryModel');
 const createModel = r => require.ensure([], () => r(require('@/page/createModel')), 'createModel');
 
+/* 分页面 */
+    /* public */
+const waterQuery = r => require.ensure([], () => r(require('@/page/public/waterQuery')), 'waterQuery');
+    /* admin */
+const createGov = r => require.ensure([], () => r(require('@/page/admin/createGov')), 'createGov');
+const createFactory = r => require.ensure([], () => r(require('@/page/admin/createFactory')), 'createFactory');
+    /* government */
+const incCredit = r => require.ensure([], () => r(require('@/page/government/incCredit')), 'createGov');
+const sensorQuery = r => require.ensure([], () => r(require('@/page/government/sensorQuery')), 'sensorQuery');
+const creditQuery = r => require.ensure([], () => r(require('@/page/government/creditQuery')), 'creditQuery');
+
 const routes = [
+    /* Index (登录) */
 	{
 		path: '/',
 		component: login
 	},
+    
+    /* 登录 */
     {
 		path: '/login',
 		component: login
@@ -46,10 +61,14 @@ const routes = [
         path: '/login_gov',
         component: login_gov
     },
+    
+    /* 注册 */
     {
         path: '/register',
 		component: register
     },
+    
+    /* 主页 */
 	{
 		path: '/home',
 		component: home,
@@ -104,11 +123,12 @@ const routes = [
 			component: transferCredit,
 			meta: ['积分管理', '积分转账'],
 		},
-		{
+		/*
+        {
 			path: '/creditQuery',
 			component: creditQuery,
 			meta: ['积分管理', '积分查询'],
-		},
+		},*/
         {
 			path: '/queryModel',
 			component: queryModel,
@@ -119,7 +139,46 @@ const routes = [
 			component: createModel,
 			meta: ['创建模板', '创建模板'],
 		}]
-	}
+	},
+    
+    /* 模型测试 */
+    {
+        path: '/queryModel',
+        component: queryModel,
+    },
+    {
+        path: '/createModel',
+        component: createModel,
+    },
+    
+    /* 分页面 */
+        /* public */
+    {
+        path: '/public/waterQuery',
+        component: waterQuery,
+    },
+        /* admin */
+    {
+        path: '/admin/createGov',
+        component: createGov,
+    },
+    {
+        path: '/admin/createFactory',
+        component: createFactory,
+    },
+        /* gov */
+    {
+        path: '/government/incCredit',
+        component: incCredit,
+    },
+    {
+        path: '/government/sensorQuery',
+        component: sensorQuery,
+    },
+    {
+        path: '/government/creditQuery',
+        component: creditQuery,
+    },
 ]
 
 
