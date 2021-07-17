@@ -1,10 +1,24 @@
 <template>
     <div class="login_page fillcontain">
         <el-container>
+                <el-aside width="300px">
+                    <section class="carousel_contianer">
+                        <div class="manage_tip1">
+                            <s>最新消息</s>
+                        </div>
+                        <el-carousel height="300px">
+                            <el-carousel-item v-for="item in 4" :key="item">
+                                <h3 class="small">{{ item }}</h3>
+                            </el-carousel-item>
+                        </el-carousel>
+                    </section>
+                </el-aside>
+                <el-main>Main</el-main>
+
             <el-main>
                 <transition name="form-fade" mode="in-out">
-                    <section class="form_contianer" v-show="showLogin">
-                        <div class="manage_tip" style="opacity: initial">
+                    <section class="form_contianer" v-show="showLogin" style="opacity: 70%">
+                        <div class="manage_tip">
                             <p>武大蚂蚁链食品朔源系统</p>
                         </div>
                         <el-row :gutter="5">
@@ -111,6 +125,16 @@ export default {
         color: #fff;
     }
 }
+.manage_tip1{
+    position: sticky;
+    width: 100%;
+    top: -100px;
+    left: 0;
+    s{
+        font-size: 34px;
+        color: #fff;
+    }
+}
 .form_contianer{
     .wh(350px, 250px);
     .ctp(-500px, 250px);
@@ -162,4 +186,28 @@ export default {
     padding: 10px 0;
     background-color: #f9fafc;
 }
+
+
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 150px;
+    margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+}
+.carousel_contianer{
+    .wh(500px, 350px);
+    .ctp(1000px, 350px);
+    text-align: center;
+
+}
+
 </style>
