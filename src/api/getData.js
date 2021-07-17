@@ -12,8 +12,67 @@ export const login = (data) => {
 /**
  * 注册(新增)
  */
+export const register = (data) => {
+	return baseAxios.put('/api/auth/register', data).then(result => {
+		return result.data
+	})
+}
 
-export const register = data => fetch('/api/auth/register', data, 'PUT');
+/**
+ * 获取水质信息列表(新增)
+ */
+export const getWaterMessageList = (data) => {
+	return baseAxios.get('/api/sensor/messagelist', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加政府实体(新增)
+ */
+export const createGovernment = (data) => {
+	return baseAxios.put('/api/addgov', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加工厂实体(新增)
+ */
+export const createFactory = (data) => {
+	return baseAxios.put('/api/addgov', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加传感器记录(新增)
+ */
+export const incCredit = (data) => {
+	return baseAxios.put('/api/addgov', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询传感器记录(新增)
+ */
+export const sensorQuery = (data) => {
+	return baseAxios.put('/api/addgov', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询积分(新)
+ */
+export const creditQuery = (data) => {
+	return baseAxios.put('/api/addgov', data).then(result => {
+		return result.data
+	})
+}
+
+/*----------------------------------------*/
 
 /**
  * 朔源物品统计
@@ -102,6 +161,8 @@ export const addGuestMessage = (data) => {
 }
 
 
+
+
 /**
  * 获取用户信息
  */
@@ -117,7 +178,7 @@ export const getAdminInfo = () => {
  * 查询积分
  */
 
-export const queryCredit = () => {
+export const queryCredit = (data) => {
 	return baseAxios.get('/api/credit/query',data).then(result => {
 		return result.data
 	})

@@ -26,6 +26,9 @@ const creditQuery = r => require.ensure([], () => r(require('@/page/creditQuery'
 const transferCredit = r => require.ensure([], () => r(require('@/page/transferCredit')), 'transferCredit');
 const issueCredit = r => require.ensure([], () => r(require('@/page/issueCredit')), 'issueCredit');
 
+const queryModel = r => require.ensure([], () => r(require('@/page/queryModel')), 'queryModel');
+const createModel = r => require.ensure([], () => r(require('@/page/createModel')), 'createModel');
+
 const routes = [
 	{
 		path: '/',
@@ -55,35 +58,43 @@ const routes = [
 			path: '',
 			component: dashboard,
 			meta: [],
-		},{
+		},
+        {
 			path: '/addAttribute',
 			component: addAttribute,
 			meta: ['属性管理', '添加属性'],
-		},{
+		},
+        {
 			path: '/attributeList',
 			component: attributeList,
 			meta: ['属性管理', '属性列表'],
-		},{
+		},
+        {
 			path: '/logisticList',
 			component: logisticList,
 			meta: ['交易环节管理', '交易环节列表'],
-		},{
+		},
+        {
 			path: '/addLogistic',
 			component: addLogistic,
 			meta: ['交易环节管理', '添加交易环节'],
-		},{
+		},
+        {
 			path: '/messageList',
 			component: messageList,
 			meta: ['消息管理', '消息列表'],
-		},{
+		},
+        {
 			path: '/addMessage',
 			component: addMessage,
 			meta: ['消息管理', '添加新消息'],
-		},{
+		},
+        {
 			path: '/explain',
 			component: explain,
 			meta: ['说明', '说明'],
-		},{
+		},
+        {
 			path: '/issueCredit',
 			component: issueCredit,
 			meta: ['积分管理', '积分发放'],
@@ -97,6 +108,16 @@ const routes = [
 			path: '/creditQuery',
 			component: creditQuery,
 			meta: ['积分管理', '积分查询'],
+		},
+        {
+			path: '/queryModel',
+			component: queryModel,
+			meta: ['查询模板', '查询模板'],
+		},
+        {
+			path: '/createModel',
+			component: createModel,
+			meta: ['创建模板', '创建模板'],
 		}]
 	}
 ]
@@ -107,7 +128,7 @@ const router = new Router({
   strict: process.env.NODE_ENV !== 'production',
 });
 
-
+/*
 router.beforeEach((to, from, next) => {
   if (to.path === '/' || to.path === '/login' || to.path === '/login_factory' || to.path === '/login_gov' || to.path === '/register') {
     next();
@@ -119,6 +140,6 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
-});
+});*/
 
 export default router;
