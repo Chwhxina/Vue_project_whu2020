@@ -15,9 +15,9 @@
                   <p>{{dataText}}</p>
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
-                <el-table-column property="factoryId" label="工厂Id" width="120"></el-table-column>
-                <el-table-column property="factoryAddress" label="工厂位置" width="120"></el-table-column>
-                <el-table-column property="sensorAddress" label="传感器位置" width="120"></el-table-column>
+                <el-table-column property="factoryId" label="工厂Id" width="150"></el-table-column>
+                <el-table-column property="factoryAddress" label="工厂位置" width="150"></el-table-column>
+                <el-table-column property="sensorAddress" label="传感器位置" width="150"></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -66,7 +66,7 @@
                 catch(err) {
                     this.dataText = '获取数据失败' +  err;
                 }
-            }, 
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
@@ -86,8 +86,8 @@
                 }
                 let res = await getWaterMessageList(queryData);*/
                 let res = await getAllSensor();
-                if (res.rspCode == '000000') {
-                    var messageList = res.rspData.data.sensors ;
+                if (res.rspCode == '0') {
+                    var messageList = res.data.sensors ;
                     this.count = messageList.length;
                     this.tableData = [];
                     messageList.forEach(item => {
@@ -101,7 +101,7 @@
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
-                } 
+                }
                 else {
                     this.dataText = "数据加载异常" + res.rspMsg;
                 }
@@ -114,6 +114,6 @@
 	@import '../../style/mixin';
     .table_container{
         padding: 20px;
-        .wh(1220px, 600px);
+        .wh(500px, 600px);
     }
 </style>

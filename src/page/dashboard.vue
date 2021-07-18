@@ -1,14 +1,13 @@
 <template>
     <div>
-        <el-carousel indica tor-position="outside" height="600px" >
-            <el-carousel-item v-for="item in items" :key="item">
-                <div class="block" v-for="fit in fits" :key="fit">
-                    <span class="demonstration">{{ fit }}</span>
-                    <el-image
-                        style="width: 100px; height: 100px"
-                        :src="url"
-                        :fit="fit"></el-image>
-                </div>
+        <el-carousel indica tor-position="outside" height="800px" >
+            <el-carousel-item
+                :autoplay="false" class="lun_imgs"
+                v-for="item in items"
+                v-bind:key="item.url">
+                <a :href="item.link">
+                    <img :src="item.url" style="height: 100%; width: 100%; position: relative"/>
+                </a>
             </el-carousel-item>
         </el-carousel>
 
@@ -59,7 +58,12 @@
                 headings:['水质查询','工厂信息','传感器', '最新消息','合作联系'],
                 welcome: 'Vue.js,Element-UI',
                 pj_name: 'Project Name',
-                item: []
+                items: [
+                    {url: require('../assets/svg/图5.jpg'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                    {url: require('../assets/svg/图6.jpg'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                    {url: require('../assets/svg/图7.jpg'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                    {url: require('../assets/svg/图8.jpg'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'}
+                ]
             };
     	},
     	components: {

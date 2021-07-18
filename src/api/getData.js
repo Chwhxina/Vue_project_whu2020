@@ -58,7 +58,7 @@ export const incCredit = (data) => {
  * 查询传感器记录(新增)
  */
 export const sensorQuery = (data) => {
-	return baseAxios.get('/api/sensor/queryLog', data).then(result => {
+	return baseAxios.post('/api/sensor/queryLog', data).then(result => {
 		return result.data
 	})
 }

@@ -83,9 +83,9 @@
             async getMessages(){
                 this.dataText = "正在加载数据,请稍后...";
                 console.log(this.queryForm);
-                let res = await creditQuery({factory: this.queryForm.factory});
+                let res = await creditQuery({factoryName: this.queryForm.factory});
                 if (res.rspCode == '0') {
-                    var messageList = res.rspData.data.scoreList ;
+                    var messageList = res.data.scoreList ;
                     this.count = messageList.length;
                     this.tableData = [];
                     messageList.forEach(item => {

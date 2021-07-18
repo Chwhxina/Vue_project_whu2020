@@ -1,8 +1,8 @@
 <template>
     <div class="login_page fillcontain">
         <el-container>
-                <el-aside width="400px">
-                    <section class="carousel_container">
+                <el-aside width="300px">
+                    <section class="carousel_contianer">
                         <div class="manage_tip1">
                             <s>最新消息</s>
                         </div>
@@ -215,7 +215,7 @@ export default {
 .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
 }
-.carousel_container{
+.carousel_contianer{
     .wh(500px, 350px);
     .ctp(1000px, 350px);
     text-align: center;

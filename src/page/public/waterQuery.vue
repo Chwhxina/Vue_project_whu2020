@@ -7,7 +7,7 @@
                     <el-input v-model="queryForm.factory" placeholder="工厂名称"></el-input>
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
+                    <el-input v-model="queryForm.address" placeholder="传感器位置"></el-input>
                 </el-form-item>
                 <el-form-item label="时间区间">
                     <el-date-picker
@@ -36,21 +36,20 @@
                 <template slot="empty">
                   <p>{{dataText}}</p>
                 </template>
-                <el-table-column type="index" width="50"></el-table-column>
-                <el-table-column property="factory" label="工厂" width="flex"></el-table-column>
-                <el-table-column property="sensorId" label="传感器id" width="flex"></el-table-column>
-                <el-table-column property="time" label="监测时间" width="flex"></el-table-column>
-                <el-table-column property="val0" label="ph" width="flex"></el-table-column>
-                <el-table-column property="val1" label="chroma" width="flex"></el-table-column>
-                <el-table-column property="val2" label="ss" width="flex"></el-table-column>
-                <el-table-column property="val3" label="bod5" width="flex"></el-table-column>
-                <el-table-column property="val4" label="cod" width="flex"></el-table-column>
-                <el-table-column property="val5" label="an" width="flex"></el-table-column>
-                <el-table-column property="val6" label="tn" width="flex"></el-table-column>
-                <el-table-column property="val7" label="tp" width="flex"></el-table-column>
-                <el-table-column property="val8" label="vp" width="flex"></el-table-column>
-                <el-table-column property="val9" label="toc" width="flex"></el-table-column>
-
+                <el-table-column type="index" width="80"></el-table-column>
+                <el-table-column property="factory" label="工厂" width="200"></el-table-column>
+                <el-table-column property="sensorId" label="传感器id" width="160"></el-table-column>
+                <el-table-column property="val0" label="ph" width="80"></el-table-column>
+                <el-table-column property="val1" label="chroma" width="140"></el-table-column>
+                <el-table-column property="val2" label="ss" width="80"></el-table-column>
+                <el-table-column property="val3" label="bod5" width="80"></el-table-column>
+                <el-table-column property="val4" label="cod" width="80"></el-table-column>
+                <el-table-column property="val5" label="an" width="80"></el-table-column>
+                <el-table-column property="val6" label="tn" width="80"></el-table-column>
+                <el-table-column property="val7" label="tp" width="80"></el-table-column>
+                <el-table-column property="val8" label="vp" width="80"></el-table-column>
+                <el-table-column property="val9" label="toc" width="80"></el-table-column>
+                <el-table-column property="time" label="监测时间" width="200"></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -146,6 +145,7 @@
                 if (res.rspCode == '0') {
                     var dataPack = res.data;
                     this.tableData = [];
+                    this.count = 0;
                     dataPack.forEach(record => {
                         var factoryName = record.factoryName;
                         //var factory = record.factoryName;
@@ -157,6 +157,7 @@
                             tableData.factory = factory;
                             //tableData.sensorId = item.sensorId;
                             tableData.sensorId = sensorId;
+                            //console.log("createTime: ", item.createTime)
                             tableData.time = item.createTime;
                             tableData.val0 = item.ph;
                             tableData.val1 = item.chroma;
@@ -188,6 +189,6 @@
 	@import '../../style/mixin';
     .table_container{
         padding: 20px;
-        .wh(1230px, 600px);
+        .wh(1500px, 600px);
     }
 </style>

@@ -7,7 +7,7 @@
                     <el-input v-model="queryForm.factory" placeholder="工厂名称"></el-input>
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
+                    <el-input v-model="queryForm.address" placeholder="传感器位置"></el-input>
                 </el-form-item>
                 <el-form-item label="时间区间">
                     <el-date-picker
@@ -135,8 +135,9 @@
                 console.log(this.queryForm);
                 let res = await sensorQuery({factoryName: this.queryForm.factory, address: this.queryForm.address, startTime: this.queryForm.begin, endTime: this.queryForm.end});
                 if (res.rspCode == '0') {
-                    var dataPack = res.Data ;
+                    var dataPack = res.data ;
                     this.tableData = [];
+                    this.count = 0;
                     dataPack.forEach(record => {
                         var factoryName = record.factoryName;
                         var factory = factoryName.substr(0, factoryName.lastIndexOf("_"));
