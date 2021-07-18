@@ -17,9 +17,9 @@
                 <template slot="empty">
                   <p>{{dataText}}</p>
                 </template>
-                <el-table-column type="index" width="50"></el-table-column>
-                <el-table-column property="factory" label="工厂" width="120"></el-table-column>
-                <el-table-column property="credit" label="积分" width="90"></el-table-column>
+                <el-table-column type="index" width="flex"></el-table-column>
+                <el-table-column property="factory" label="工厂" width="flex"></el-table-column>
+                <el-table-column property="credit" label="积分" width="flex"></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -71,7 +71,7 @@
                 catch(err) {
                     this.dataText = '获取数据失败' +  err;
                 }
-            }, 
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
@@ -105,7 +105,7 @@
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
-                } 
+                }
                 else {
                     this.dataText = "数据加载异常" + res.rspMsg;
                 }

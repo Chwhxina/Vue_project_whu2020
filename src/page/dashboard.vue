@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-carousel indica tor-position="outside" height="600px" >
-            <el-carousel-item v-for="item in 4" :key="item">
+            <el-carousel-item v-for="item in items" :key="item">
                 <div class="block" v-for="fit in fits" :key="fit">
                     <span class="demonstration">{{ fit }}</span>
                     <el-image

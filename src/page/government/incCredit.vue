@@ -2,7 +2,7 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
-            
+
             <el-form :model="createForm" ref="createForm" :rules="rules" class="createForm">
                 <el-form-item label="工厂" prop="object">
                     <el-input v-model="createForm.object" placeholder="请输入工厂名"></el-input>
@@ -20,14 +20,6 @@
                     <el-button type="primary" @click="onSubmit('createForm')">提交</el-button>
                 </el-form-item>
             </el-form>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination
-                  @size-change="handleSizeChange"
-                  @current-change="handleCurrentChange"
-                  :current-page="currentPage"
-                  :page-size="200"
-                </el-pagination>
-            </div>
         </div>
     </div>
 </template>
@@ -88,7 +80,7 @@
                                 message: res.rspMsg
                             });
                         }
-                    } 
+                    }
                     else {
                         this.$notify.error({
                             title: '错误',

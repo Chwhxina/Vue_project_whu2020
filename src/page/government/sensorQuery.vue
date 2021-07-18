@@ -9,11 +9,16 @@
                 <el-form-item label="地址">
                     <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
                 </el-form-item>
-                <el-form-item label="开始时间">
-                    <el-input v-model="queryForm.begin" placeholder="开始时间"></el-input>
-                </el-form-item>
-                <el-form-item label="结束时间">
-                    <el-input v-model="queryForm.end" placeholder="结束时间"></el-input>
+                <el-form-item label="时间区间">
+                <el-date-picker
+                    v-model="value2"
+                    type="datetimerange"
+                    :picker-options="pickerOptions"
+                    range-separator="至"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                    align="right">
+                </el-date-picker>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit('queryForm')">查询</el-button>
@@ -27,10 +32,10 @@
                   <p>{{dataText}}</p>
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
-                <el-table-column property="factory" label="工厂" width="120"></el-table-column>
-                <el-table-column property="address" label="传感器" width="90"></el-table-column>
-                <el-table-column property="time" label="提交时间" width="160"></el-table-column>
-                <el-table-column property="val0" label="日志记录" width="80"></el-table-column>
+                <el-table-column property="factory" label="工厂" ></el-table-column>
+                <el-table-column property="address" label="传感器" ></el-table-column>
+                <el-table-column property="time" label="提交时间" ></el-table-column>
+                <el-table-column property="val0" label="日志记录" ></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -65,7 +70,35 @@
                     address: '',
                     begin:   '',
                     end:     ''
-                }
+                },
+                //时间选择器
+                pickerOptions: {
+                    shortcuts: [{
+                        text: '最近一周',
+                        onClick(picker) {
+                            const end = new Date();
+                            const start = new Date();
+                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', [start, end]);
+                        }
+                    }, {
+                        text: '最近一个月',
+                        onClick(picker) {
+                            const end = new Date();
+                            const start = new Date();
+                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                            picker.$emit('pick', [start, end]);
+                        }
+                    }, {
+                        text: '最近三个月',
+                        onClick(picker) {
+                            const end = new Date();
+                            const start = new Date();
+                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                            picker.$emit('pick', [start, end]);
+                        }
+                    }]
+                },
             }
         },
     	components: {
@@ -85,7 +118,7 @@
                 catch(err) {
                     this.dataText = '获取数据失败' +  err;
                 }
-            }, 
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
@@ -121,7 +154,7 @@
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
-                } 
+                }
                 else {
                     this.dataText = "数据加载异常" + res.rspMsg;
                 }

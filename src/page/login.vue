@@ -1,14 +1,15 @@
 <template>
     <div class="login_page fillcontain">
         <el-container>
-                <el-aside width="300px">
+                <el-aside width="400px">
                     <section class="carousel_container">
                         <div class="manage_tip1">
                             <s>最新消息</s>
                         </div>
-                        <el-carousel height="300px">
-                            <el-carousel-item v-for="item in 4" :key="item">
-                                <h3 class="small">{{ item }}</h3>
+                        <el-carousel height="300px" :autoplay="false" >
+                            <el-carousel-item :autoplay="false" class="lun_imgs"  v-for="item in items" v-bind:key="item.url">
+                                <img :src="item.url" style="height: 100%; width: 100%; position: relative"/>
+
                             </el-carousel-item>
                         </el-carousel>
                     </section>
@@ -54,6 +55,12 @@
 export default {
     data(){
         return {
+            items: [
+                {url: require('../assets/svg/图1.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图2.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图3.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图4.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'}
+            ],
             loginForm: {
                 account: '',
                 password: '',

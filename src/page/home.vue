@@ -1,6 +1,6 @@
 
 <template>
-    <el-container>
+    <div>
         <el-row style="height: 60px">
             <el-menu
                 :default-active="defaultActive"
@@ -13,19 +13,28 @@
                 <el-menu-item index="home">首页</el-menu-item>
                 <el-submenu index="2">
                     <template slot="title">查询</template>
-                    <el-menu-item index="water_info">水质信息</el-menu-item>
+                    <el-menu-item index="sensorQuery">水质信息</el-menu-item>
                     <el-menu-item index="fact_info">工厂信息</el-menu-item>
-                    <el-menu-item index="credit_info">积分信息</el-menu-item>
-                    <el-menu-item index="sensorQuery">传感器</el-menu-item>
+                    <el-menu-item index="creditQuery">积分信息</el-menu-item>
+                    <el-menu-item index="" >传感器</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
-                    <template slot="title">添加</template>
-                    <el-menu-item index="add_gov">政府</el-menu-item>
-                    <el-menu-item index="add_fact">工厂</el-menu-item>
-                    <el-menu-item index="sensorQuery">传感器</el-menu-item>
+                    <template slot="title">修改</template>
+                    <el-menu-item index="createFactory">政府</el-menu-item>
+                    <el-menu-item index="createFactory">创建工厂</el-menu-item>
+                    <el-menu-item index="add_sensor">传感器</el-menu-item>
+                    <el-menu-item index="incCredit">积分</el-menu-item>
                 </el-submenu>
                 </el-col>
-                <head-top></head-top>
+                <el-col :span="2">
+                    <el-dropdown @command="handleCommand" menu-align='start'>
+                        <img :src="baseImgPath + adminInfo.avatar" class="avator">
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item command="home">首页</el-dropdown-item>
+                            <el-dropdown-item command="signout">退出</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
+                </el-col>
             </el-menu>
         </el-row>
         <el-row>
@@ -33,26 +42,60 @@
                 <router-view></router-view>
             </keep-alive>
         </el-row>
-
-    </el-container>
+    </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import headTop from '@/components/headTop'
 import '@/router/index'
+import {setStore} from '@/config/mUtils'
+import {baseImgPath} from '@/config/env'
+import {mapActions, mapState} from 'vuex'
+import {mapMutations} from 'vuex';
 export default {
-    components: {
-        headTop,
+    data(){
+
+        return {
+            baseImgPath,
+        }
+    },
+    created(){
+        if (!this.adminInfo.id) {
+            this.getAdminData()
+        }
     },
     computed: {
         defaultActive: function(){
             return this.$route.path.replace('/', '');
-        }
+        },
+        ...mapState(['adminInfo']),
     },
     methods: {
         handleSelect(key, keyPath) {
             console.log(key, keyPath);
+        },
+        ...mapActions(['getAdminData']),
+        ...mapMutations(['changeLogin']),
+        async handleCommand(command) {
+            if (command == 'home') {
+                this.$router.push('/home');
+            }else if(command == 'signout'){
+                const status = 1;
+                this.changeLogin({ Authorization: ""});
+                if (status == 1) {
+                    this.$message({
+                        type: 'success',
+                        message: '退出成功'
+                    });
+                    this.$router.push('/');
+                }else{
+                    this.$message({
+                        type: 'error',
+                        message: res.message
+                    });
+                }
+            }
         },
     }
 }

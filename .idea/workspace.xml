@@ -1,55 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d679c40-9f58-4dce-a5d5-1523c569af8b" name="默认变更列表" comment="god">
-      <change afterPath="$PROJECT_DIR$/src/page/home_init.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/sensorQuery.vue" afterDir="false" />
+    <list default="true" id="4d679c40-9f58-4dce-a5d5-1523c569af8b" name="默认变更列表" comment="7-18:9:00am">
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/图1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/图2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/图3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/svg/图4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/UPGRADE_GUIDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/UPGRADE_GUIDE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/dist/axios.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/adapters/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/adapters/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/adapters/xhr.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/adapters/xhr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/core/Axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/core/Axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/core/dispatchRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/core/dispatchRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/core/enhanceError.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/core/enhanceError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/core/settle.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/core/settle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/defaults.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/defaults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/helpers/btoa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/helpers/buildURL.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/helpers/buildURL.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/helpers/cookies.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/helpers/cookies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/helpers/isURLSameOrigin.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/helpers/isURLSameOrigin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/axios/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/axios/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/follow-redirects/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/follow-redirects/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/dist/debug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/node.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/src/browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/src/common.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/debug/src/node.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/ms/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/ms/license.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/ms/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/node_modules/ms/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/follow-redirects/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/follow-redirects/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/headTop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headTop.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/attributeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/attributeList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/admin/createGov.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/admin/createGov.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/government/createFactory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/createFactory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/government/creditQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/creditQuery.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/government/incCredit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/incCredit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/sensorQuery.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <list id="1bbe3470-24c2-4125-900f-791343578be2" name="revert" comment="" />
@@ -86,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/svg" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -94,6 +61,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/svg" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
@@ -139,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626442299848</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="7-18:9:00am">
+      <created>1626571025961</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1626571025961</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +176,7 @@
       <path value="$PROJECT_DIR$/src" />
     </ignored-roots>
     <MESSAGE value="god" />
-    <option name="LAST_COMMIT_MESSAGE" value="god" />
+    <MESSAGE value="7-18:9:00am" />
+    <option name="LAST_COMMIT_MESSAGE" value="7-18:9:00am" />
   </component>
 </project>
