@@ -75,7 +75,7 @@ export default {
                                 });
                                 console.log(res.data.token);
                                 _this.changeLogin({ Authorization: res.data.token});
-                                this.$router.push('home');
+                                this.$router.push('home_gov');
                             } else {
                                 this.$message({
                                     type: 'error',

@@ -16,7 +16,7 @@
                     <el-menu-item index="waterQuery">水质信息</el-menu-item>
                     <el-menu-item index="creditQuery">积分信息</el-menu-item>
                     <el-menu-item index="sensorQuery">传感器信息</el-menu-item>
-                    <el-menu-item index="Listsensor">传感器</el-menu-item>
+                    <el-menu-item index="getAllSensor">传感器</el-menu-item>
                 </el-submenu>
                 <el-submenu index="3">
                     <template slot="title">修改</template>
@@ -26,9 +26,8 @@
                 </el-submenu>
                 </el-col>
                 <el-col :span="2">
-                    <el-dropdown @command="handleCommand" menu-align='start'>
-                        <img :src="baseImgPath + adminInfo.avatar" class="avator">
-                        <el-dropdown-menu slot="dropdown">
+                    <el-dropdown  @command="handleCommand" menu-align='start'>
+                        <el-dropdown-menu v-bind:title="username" slot="dropdown">
                             <el-dropdown-item command="home">首页</el-dropdown-item>
                             <el-dropdown-item command="signout">退出</el-dropdown-item>
                         </el-dropdown-menu>
@@ -57,6 +56,7 @@ export default {
 
         return {
             baseImgPath,
+            username,
         }
     },
     created(){
@@ -69,6 +69,7 @@ export default {
             return this.$route.path.replace('/', '');
         },
         ...mapState(['adminInfo']),
+        ...mapState(['username']),
     },
     methods: {
         handleSelect(key, keyPath) {
@@ -81,7 +82,7 @@ export default {
                 this.$router.push('/home');
             }else if(command == 'signout'){
                 const status = 1;
-                this.changeLogin({ Authorization: ""});
+                this.changeLogin({ Authorization: "", username: ""});
                 if (status == 1) {
                     this.$message({
                         type: 'success',

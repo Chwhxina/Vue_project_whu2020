@@ -44,6 +44,16 @@ const sensorQuery = r => require.ensure([], () => r(require('@/page/government/s
 const creditQuery = r => require.ensure([], () => r(require('@/page/government/creditQuery')), 'creditQuery');
 const getAllSensor = r => require.ensure([], () => r(require('@/page/government/getAllSensor')), 'getAllSensor');
 
+const gov_createFactory = r => require.ensure([], () => r(require('@/page/gov_createFactory')), 'gov_createFactory');
+const gov_creditQuery = r => require.ensure([], () => r(require('@/page/gov_creditQuery')), 'gov_creditQuery');
+const gov_getAllsensor = r => require.ensure([], () => r(require('@/page/gov_getAllsensor')), 'gov_getAllsensor');
+const gov_incCredit = r => require.ensure([], () => r(require('@/page/gov_incCredit')), 'gov_incCredit');
+const gov_sensorQuery = r => require.ensure([], () => r(require('@/page/gov_sensorQuery')), 'gov_sensorQuery');
+const gov_waterQuery = r => require.ensure([], () => r(require('@/page/gov_waterQuery')), 'gov_waterQuery');
+
+
+
+
 const routes = [
     /* Index (登录) */
 	{
@@ -164,10 +174,6 @@ const routes = [
                 component: waterQuery,
             },
             {
-                path: '/Listsensor',
-                component: Listsensor,
-            },
-            {
                 path: '/getAllSensor',
                 component: getAllSensor,
             }
@@ -229,7 +235,7 @@ const routes = [
     //gov
     {
         path: '/home_gov',
-        component: home_factory,
+        component: home_gov,
         name: '',
         children: [{
             path: '',
@@ -279,9 +285,30 @@ const routes = [
                 component: createGov,
             },
             {
-                path: '/gov_Listsensor',
-                component: gov_Listsensor,
+                path: '/gov_createFactory',
+                component: gov_createFactory,
+            },
+            {
+                path: '/gov_creditQuery',
+                component: gov_creditQuery,
+            },
+            {
+                path: '/gov_getAllsensor',
+                component: gov_getAllsensor,
+            },
+            {
+                path: '/gov_incCredit',
+                component: gov_incCredit,
+            },
+            {
+                path: '/gov_sensorQuery',
+                component: gov_sensorQuery,
+            },
+            {
+                path: '/gov_waterQuery',
+                component: gov_waterQuery,
             }
+
         ]
     },
     /* 模型测试 */

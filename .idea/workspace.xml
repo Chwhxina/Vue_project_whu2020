@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d679c40-9f58-4dce-a5d5-1523c569af8b" name="默认变更列表" comment="7-18:9:00am">
-      <change afterPath="$PROJECT_DIR$/src/page/factory/factory_queryLog.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/government/Listsensor.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home_factory.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/page/home_gov.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_createFactory.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_creditQuery.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_getAllsensor.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_incCredit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_sensorQuery.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/gov_waterQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/admin/createFactory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/admin/createFactory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/government/createFactory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/createFactory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/government/incCredit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/incCredit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/home_gov.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/home_gov.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/login_factory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login_factory.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/login_gov.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login_gov.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/public/waterQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/public/waterQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <list id="1bbe3470-24c2-4125-900f-791343578be2" name="revert" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +87,8 @@
       <updated>1626436970944</updated>
       <workItem from="1626436972200" duration="7765000" />
       <workItem from="1626453323400" duration="304000" />
+      <workItem from="1626623119024" duration="80000" />
+      <workItem from="1626623209668" duration="5763000" />
     </task>
     <task id="LOCAL-00001" summary="god">
       <created>1626437083721</created>
@@ -126,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626592550834</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="7-18:9:00am">
+      <created>1626613515841</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1626613515841</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

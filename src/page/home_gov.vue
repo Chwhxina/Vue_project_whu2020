@@ -13,21 +13,19 @@
                     <el-menu-item index="home_gov">首页</el-menu-item>
                     <el-submenu index="2">
                         <template slot="title">查询</template>
-                        <el-menu-item index="sensorQuery">水质信息</el-menu-item>
-                        <el-menu-item index="fact_info">工厂信息</el-menu-item>
-                        <el-menu-item index="creditQuery">积分信息</el-menu-item>
-                        <el-menu-item index="gov_Listsensor">积分信息</el-menu-item>
+                        <el-menu-item index="gov_waterQuery">水质信息</el-menu-item>
+                        <el-menu-item index="gov_getAllsensor">传感器</el-menu-item>
+                        <el-menu-item index="gov_creditQuery">积分信息</el-menu-item>
+                        <el-menu-item index="gov_sensorQuery">积分记录</el-menu-item>
                     </el-submenu>
                     <el-submenu index="3">
                         <template slot="title">修改</template>
-                        <el-menu-item index="createFactory">创建工厂</el-menu-item>
-                        <el-menu-item index="add_sensor">传感器</el-menu-item>
-                        <el-menu-item index="incCredit">积分</el-menu-item>
+                        <el-menu-item index="gov_createFactory">创建工厂</el-menu-item>
+                        <el-menu-item index="gov_incCredit">积分</el-menu-item>
                     </el-submenu>
                 </el-col>
                 <el-col :span="2">
-                    <el-dropdown @command="handleCommand" menu-align='start'>
-                        <img :src="baseImgPath + adminInfo.avatar" class="avator">
+                    <el-dropdown v-bind:title="username" @command="handleCommand" menu-align='start'>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item command="home_gov">首页</el-dropdown-item>
                             <el-dropdown-item command="signout">退出</el-dropdown-item>
@@ -57,6 +55,7 @@ export default {
 
         return {
             baseImgPath,
+            username: localStorage.getItem('username'),
         }
     },
     created(){

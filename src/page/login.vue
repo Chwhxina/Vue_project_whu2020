@@ -100,6 +100,7 @@ export default {
                                 });
                                 console.log(res.data.token);
                                 _this.changeLogin({ Authorization: res.data.token});
+                                _this.changeLogin({ username: this.loginForm.username});
                                 this.$router.push('home');
                             } else {
                                 this.$message({
