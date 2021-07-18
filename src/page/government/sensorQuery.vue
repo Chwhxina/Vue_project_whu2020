@@ -38,9 +38,9 @@
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
                 <el-table-column property="factory" label="工厂" ></el-table-column>
-                <el-table-column property="address" label="传感器" ></el-table-column>
-                <el-table-column property="time" label="提交时间" ></el-table-column>
-                <el-table-column property="val0" label="日志记录" ></el-table-column>
+                <el-table-column property="sensorId" label="传感器id" ></el-table-column>
+                <el-table-column property="description" label="描述" ></el-table-column>
+                <el-table-column property="time" label="记录时间" ></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -114,7 +114,7 @@
             async initData(){
                 this.dataText = '请选择查询条件,单击查询按钮查询';
             },
-            onSubmit(querryName) {
+            onSubmit() {
                 try {
                     this.getMessages();
                 }
@@ -133,25 +133,24 @@
             async getMessages(){
                 this.dataText = "正在加载蚂蚁链数据,请稍后...";
                 console.log(this.queryForm);
-                /*var queryData = {
-                    factory: this.queryForm.factory,
-                    address: this.queryForm.address,
-                    begin: this.queryForm.begin,
-                    end: this.queryForm.end,
-                }
-                let res = await getWaterMessageList(queryData);*/
-                let res = await sensorQuery({factory: this.queryForm.factory, address: this.queryForm.address, begin: this.queryForm.begin, end: this.queryForm.end});
+                let res = await sensorQuery({factoryName: this.queryForm.factory, address: this.queryForm.address, startTime: this.queryForm.begin, endTime: this.queryForm.end});
                 if (res.rspCode == '0') {
-                    var messageList = res.rspData.messageList ;
-                    this.count = messageList.length;
+                    var dataPack = res.Data ;
                     this.tableData = [];
-                    messageList.forEach(item => {
-                        const tableData = {};
-                        tableData.factory = item.factory;
-                        tableData.address = item.address;
-                        tableData.time = item.time;
-                        tableData.val0 = item.val0;
-                        this.tableData.push(tableData);
+                    dataPack.forEach(record => {
+                        var factoryName = record.factoryName;
+                        var factory = factoryName.substr(0, factoryName.lastIndexOf("_"));
+                        var sensorId = factoryName.substr(factoryName.lastIndexOf("_") + 1);
+                        var data = record.data;
+                        data.forEach(item => {
+                            const tableData = {};
+                            tableData.factory = factory;
+                            tableData.sensorId = sensorId;
+                            tableData.description = item.description;
+                            tableData.time = item.createTime;
+                            this.tableData.push(tableData);
+                            this.count++;
+                        })
                     })
 
                     if (this.tableData.length === 0) {

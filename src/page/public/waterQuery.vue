@@ -112,7 +112,6 @@
                     }]
                 },
             }
-
         },
     	components: {
     		headTop,
@@ -143,29 +142,36 @@
             async getMessages(){
                 this.dataText = "正在加载蚂蚁链数据,请稍后...";
                 console.log(this.queryForm);
-                let res = await getWaterMessageList({factory: this.queryForm.factory, address: this.queryForm.address, begin: this.queryForm.begin, end: this.queryForm.end});
-                if (res.rspCode == '000000') {
-                    var messageList = res.rspData.messageList ;
-                    this.count = messageList.length;
+                let res = await getWaterMessageList({factoryName: this.queryForm.factory, address: this.queryForm.address, startTime: this.queryForm.begin, endTime: this.queryForm.end});
+                if (res.rspCode == '0') {
+                    var dataPack = res.data;
                     this.tableData = [];
-                    messageList.forEach(item => {
-                        const tableData = {};
-                        tableData.factory = item.factory;
-                        tableData.sensorId = item.sensorId;
-                        tableData.val0 = item.val0;
-                        tableData.time = item.time;
-                        tableData.val1 = item.val1;
-                        tableData.val2 = item.val2;
-                        tableData.val3 = item.val3;
-                        tableData.val4 = item.val4;
-                        tableData.val5 = item.val5;
-                        tableData.val6 = item.val6;
-                        tableData.val7 = item.val7;
-                        tableData.val8 = item.val8;
-                        tableData.val9 = item.val9;
-                        this.tableData.push(tableData);
+                    dataPack.forEach(record => {
+                        var factoryName = record.factoryName;
+                        //var factory = record.factoryName;
+                        var factory = factoryName.substr(0, factoryName.lastIndexOf("_"));
+                        var sensorId = factoryName.substr(factoryName.lastIndexOf("_") + 1);
+                        var data = record.data;
+                        data.forEach(item => {
+                            const tableData = {};
+                            tableData.factory = factory;
+                            //tableData.sensorId = item.sensorId;
+                            tableData.sensorId = sensorId;
+                            tableData.time = item.createTime;
+                            tableData.val0 = item.ph;
+                            tableData.val1 = item.chroma;
+                            tableData.val2 = item.ss;
+                            tableData.val3 = item.bod5;
+                            tableData.val4 = item.cod;
+                            tableData.val5 = item.an;
+                            tableData.val6 = item.tn;
+                            tableData.val7 = item.tp;
+                            tableData.val8 = item.vp;
+                            tableData.val9 = item.toc;
+                            this.tableData.push(tableData);
+                            this.count++;
+                        })
                     })
-
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
@@ -182,6 +188,6 @@
 	@import '../../style/mixin';
     .table_container{
         padding: 20px;
-        .wh(1220px, 600px);
+        .wh(1230px, 600px);
     }
 </style>

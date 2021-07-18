@@ -65,7 +65,7 @@
                 let _this = this;
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
-                        let res = await incCredit({object: this.createForm.object, sensorId: this.createForm.sensorId, describe: this.createForm.describe, point: this.createForm.point});
+                        let res = await incCredit({factoryName: this.createForm.object, sensorId: this.createForm.sensorId, description: this.createForm.describe, num: this.createForm.point});
                         if (res.rspCode == '0') {
                                 this.$message({
                                 type: 'success',

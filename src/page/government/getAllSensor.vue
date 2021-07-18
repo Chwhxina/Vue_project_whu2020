@@ -2,12 +2,9 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
-            <el-form :inline="true" :model="queryForm" ref="queryForm" class="queryForm">
-                <el-form-item label="工厂">
-                    <el-input v-model="queryForm.factory" placeholder="工厂名称"></el-input>
-                </el-form-item>
+            <el-form :inline="true" class="queryForm">
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit('queryForm')">查询</el-button>
+                    <el-button type="primary" @click="onSubmit()">查询</el-button>
                 </el-form-item>
             </el-form>
             <el-table
@@ -17,9 +14,10 @@
                 <template slot="empty">
                   <p>{{dataText}}</p>
                 </template>
-                <el-table-column type="index" width="flex"></el-table-column>
-                <el-table-column property="factory" label="工厂" width="flex"></el-table-column>
-                <el-table-column property="credit" label="积分" width="flex"></el-table-column>
+                <el-table-column type="index" width="50"></el-table-column>
+                <el-table-column property="factoryId" label="工厂Id" width="120"></el-table-column>
+                <el-table-column property="factoryAddress" label="工厂位置" width="120"></el-table-column>
+                <el-table-column property="sensorAddress" label="传感器位置" width="120"></el-table-column>
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -36,9 +34,9 @@
 </template>
 
 <script>
-/* 查询控件(积分查询) */
+/* 查询控件(传感器列表查询) */
     import headTop from '../../components/headTop'
-    import {creditQuery} from '@/api/getData'
+    import {getAllSensor} from '@/api/getData'
     export default {
         data(){
             return {
@@ -49,9 +47,6 @@
                 limit: 200,
                 count: 0,
                 currentPage: 1,
-                queryForm: {
-                    factory: ''
-                }
             }
         },
     	components: {
@@ -62,7 +57,7 @@
         },
         methods: {
             async initData(){
-                this.dataText = '请选择查询条件,单击查询按钮查询';
+                this.dataText = '单击查询按钮查询';
             },
             onSubmit() {
                 try {
@@ -71,7 +66,7 @@
                 catch(err) {
                     this.dataText = '获取数据失败' +  err;
                 }
-            },
+            }, 
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
@@ -82,24 +77,31 @@
             },
             async getMessages(){
                 this.dataText = "正在加载数据,请稍后...";
-                console.log(this.queryForm);
-                let res = await creditQuery({factory: this.queryForm.factory});
-                if (res.rspCode == '0') {
-                    var messageList = res.rspData.data.scoreList ;
+                /*console.log(this.queryForm);*/
+                /*var queryData = {
+                    factory: this.queryForm.factory,
+                    address: this.queryForm.address,
+                    begin: this.queryForm.begin,
+                    end: this.queryForm.end,
+                }
+                let res = await getWaterMessageList(queryData);*/
+                let res = await getAllSensor();
+                if (res.rspCode == '000000') {
+                    var messageList = res.rspData.data.sensors ;
                     this.count = messageList.length;
                     this.tableData = [];
                     messageList.forEach(item => {
                         const tableData = {};
-                        tableData.factory = item.factoryId;
-                        tableData.sensorId = item.sensorId;
-                        tableData.num = item.num;
+                        tableData.factoryId = item.factoryId;
+                        tableData.factoryAddress = item.factoryAddress;
+                        tableData.sensorAddress = item.sensorAddress;
                         this.tableData.push(tableData);
                     })
 
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
-                }
+                } 
                 else {
                     this.dataText = "数据加载异常" + res.rspMsg;
                 }

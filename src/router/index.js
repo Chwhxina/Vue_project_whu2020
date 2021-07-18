@@ -42,8 +42,7 @@ const createFactory = r => require.ensure([], () => r(require('@/page/admin/crea
 const incCredit = r => require.ensure([], () => r(require('@/page/government/incCredit')), 'createGov');
 const sensorQuery = r => require.ensure([], () => r(require('@/page/government/sensorQuery')), 'sensorQuery');
 const creditQuery = r => require.ensure([], () => r(require('@/page/government/creditQuery')), 'creditQuery');
-const gov_Listsensor = r => require.ensure([], () => r(require('@/page/government/Listsensor')), 'gov_Listsensor');
-const Listsensor = r => require.ensure([], () => r(require('@/page/government/Listsensor')), 'Listsensor');
+const getAllSensor = r => require.ensure([], () => r(require('@/page/government/getAllSensor')), 'getAllSensor');
 
 const routes = [
     /* Index (登录) */
@@ -81,7 +80,43 @@ const routes = [
 			path: '',
 			component: dashboard,
 			meta: [],
-		},{
+		},
+        {
+			path: '/addAttribute',
+			component: addAttribute,
+			meta: ['属性管理', '添加属性'],
+		},
+        {
+			path: '/attributeList',
+			component: attributeList,
+			meta: ['属性管理', '属性列表'],
+		},
+        {
+			path: '/logisticList',
+			component: logisticList,
+			meta: ['交易环节管理', '交易环节列表'],
+		},
+        {
+			path: '/addLogistic',
+			component: addLogistic,
+			meta: ['交易环节管理', '添加交易环节'],
+		},
+        {
+			path: '/messageList',
+			component: messageList,
+			meta: ['消息管理', '消息列表'],
+		},
+        {
+			path: '/addMessage',
+			component: addMessage,
+			meta: ['消息管理', '添加新消息'],
+		},
+        {
+			path: '/explain',
+			component: explain,
+			meta: ['说明', '说明'],
+		},
+        {
 			path: '/issueCredit',
 			component: issueCredit,
 			meta: ['积分管理', '积分发放'],
@@ -131,7 +166,12 @@ const routes = [
             {
                 path: '/Listsensor',
                 component: Listsensor,
-            }]
+            },
+            {
+                path: '/getAllSensor',
+                component: getAllSensor,
+            }
+        ]
 	},
     //factory
     {
@@ -256,6 +296,32 @@ const routes = [
 
     /* 分页面 */
         /* public */
+    {
+        path: '/public/waterQuery',
+        component: waterQuery,
+    },
+        /* admin */
+    {
+        path: '/admin/createGov',
+        component: createGov,
+    },
+    {
+        path: '/admin/createFactory',
+        component: createFactory,
+    },
+        /* gov */
+    {
+        path: '/government/incCredit',
+        component: incCredit,
+    },
+    {
+        path: '/government/sensorQuery',
+        component: sensorQuery,
+    },
+    {
+        path: '/government/creditQuery',
+        component: creditQuery,
+    },
 ]
 
 

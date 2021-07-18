@@ -2,7 +2,7 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
-
+            
             <el-form :model="createForm" ref="createForm" :rules="rules" class="createForm">
                 <el-form-item label="账户" prop="object">
                     <el-input v-model="createForm.object" placeholder="请输入账户名"></el-input>
@@ -23,20 +23,28 @@
                     <el-button type="primary" @click="onSubmit('createForm')">创建</el-button>
                 </el-form-item>
             </el-form>
+            <div class="Pagination" style="text-align: left;margin-top: 10px;">
+                <el-pagination
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                  :current-page="currentPage"
+                  :page-size="200">
+                </el-pagination>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-/* 创建控件模板(政府创建) */
+/* 创建控件(工厂创建) */
     import headTop from '../../components/headTop'
-    import {createGovernment} from '@/api/getData'
+    import {createFactory} from '@/api/getData'
     export default {
         data() {
             var validatePass = (rule, value, callback) => {
                 if (value !== this.createForm.password) {
                     callback(new Error('两次输入密码不一致!'));
-                }
+                } 
                 else {
                     callback();
                 }
@@ -57,7 +65,7 @@
                         { required: true, message: '请输入密码', trigger: 'blur' }
                     ],
                     confirm:  [
-                        { required: true, message: '请再次输入密码', trigger: 'blur' },
+                        { required: true, message: '请再次输入密码', trigger: 'blur' }, 
                         { validator: validatePass, trigger: "blur" }
                     ],
                     realname: [
@@ -81,13 +89,13 @@
                 let _this = this;
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
-                        let res = await createGovernment({account: this.createForm.object, password: this.createForm.password, name: this.createForm.realname, address: this.createForm.address});
-                        if (res.rspCode == '0') {
+                        let res = await createFactory({account: this.createForm.object, password: this.createForm.password, name: this.createForm.realname, address: this.createForm.address});
+                        if (res.rspCode == "0") {
                                 this.$message({
                                 type: 'success',
                                 message: '创建成功'
                             });
-                            console.log(res.rspData.token);
+                            //console.log(res.rspData.token);
                             //_this.changeLogin({ Authorization: res.rspData.token});
                             //this.$router.push('login');
                         } else {
@@ -96,7 +104,7 @@
                                 message: res.rspMsg
                             });
                         }
-                    }
+                    } 
                     else {
                         this.$notify.error({
                             title: '错误',
