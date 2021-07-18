@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <el-row style="height: 60px">
@@ -10,20 +9,17 @@
                 theme="light"
                 router>
                 <el-col :span="22">
-                <el-menu-item index="home">首页</el-menu-item>
-                <el-submenu index="2">
-                    <template slot="title">查询</template>
-                    <el-menu-item index="waterQuery">水质信息</el-menu-item>
-                    <el-menu-item index="creditQuery">积分信息</el-menu-item>
-                    <el-menu-item index="sensorQuery">传感器信息</el-menu-item>
-                    <el-menu-item index="Listsensor">传感器</el-menu-item>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title">修改</template>
-                    <el-menu-item index="createGov">政府</el-menu-item>
-                    <el-menu-item index="createFactory">创建工厂</el-menu-item>
-                    <el-menu-item index="incCredit">积分</el-menu-item>
-                </el-submenu>
+                    <el-menu-item index="home_factory">首页</el-menu-item>
+                    <el-submenu index="2">
+                        <template slot="title">查询</template>
+                        <el-menu-item index="_2020">
+                            <a href="http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml">
+                            2020新政策
+                            </a>
+                        </el-menu-item>
+                        <el-menu-item index="creditRecord">积分记录</el-menu-item>
+                        <el-menu-item index="sensorQuery">水质信息</el-menu-item>
+                    </el-submenu>
                 </el-col>
                 <el-col :span="2">
                     <el-dropdown @command="handleCommand" menu-align='start'>
@@ -78,7 +74,7 @@ export default {
         ...mapMutations(['changeLogin']),
         async handleCommand(command) {
             if (command == 'home') {
-                this.$router.push('/home');
+                this.$router.push('/home_factory');
             }else if(command == 'signout'){
                 const status = 1;
                 this.changeLogin({ Authorization: ""});

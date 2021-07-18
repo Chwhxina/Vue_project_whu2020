@@ -12,6 +12,8 @@ const login_gov = r => require.ensure([], () => r(require('@/page/login_gov')), 
 const register = r => require.ensure([], () => r(require('@/page/register')), 'register');
 
 /* 主页 */
+const home_factory = r => require.ensure([], () => r(require('@/page/home_factory')), 'home_factory');
+const home_gov = r => require.ensure([], () => r(require('@/page/home_gov')), 'home_gov');
 const dashboard = r => require.ensure([], () => r(require('@/page/dashboard')), 'dashboard');
 const home = r => require.ensure([], () => r(require('@/page/home')), 'home');
 const attributeList = r => require.ensure([], () => r(require('@/page/attributeList')), 'attributeList');
@@ -40,6 +42,8 @@ const createFactory = r => require.ensure([], () => r(require('@/page/admin/crea
 const incCredit = r => require.ensure([], () => r(require('@/page/government/incCredit')), 'createGov');
 const sensorQuery = r => require.ensure([], () => r(require('@/page/government/sensorQuery')), 'sensorQuery');
 const creditQuery = r => require.ensure([], () => r(require('@/page/government/creditQuery')), 'creditQuery');
+const gov_Listsensor = r => require.ensure([], () => r(require('@/page/government/Listsensor')), 'gov_Listsensor');
+const Listsensor = r => require.ensure([], () => r(require('@/page/government/Listsensor')), 'Listsensor');
 
 const routes = [
     /* Index (登录) */
@@ -119,9 +123,127 @@ const routes = [
             {
                 path: '/createGov',
                 component: createGov,
+            },
+            {
+                path: '/waterQuery',
+                component: waterQuery,
+            },
+            {
+                path: '/Listsensor',
+                component: Listsensor,
             }]
 	},
+    //factory
+    {
+        path: '/home_factory',
+        component: home_factory,
+        name: '',
+        children: [{
+            path: '',
+            component: dashboard,
+            meta: [],
+        },{
+            path: '/issueCredit',
+            component: issueCredit,
+            meta: ['积分管理', '积分发放'],
+        },
+            {
+                path: '/transferCredit',
+                component: transferCredit,
+                meta: ['积分管理', '积分转账'],
+            },
 
+            {
+                path: '/creditQuery',
+                component: creditQuery,
+                meta: ['积分管理', '积分查询'],
+            },
+            {
+                path: '/queryModel',
+                component: queryModel,
+                meta: ['查询模板', '查询模板'],
+            },
+            {
+                path: '/createModel',
+                component: createModel,
+                meta: ['创建模板', '创建模板'],
+            },
+            {
+                path: '/sensorQuery',
+                component: sensorQuery,
+                meta: [],
+            },
+            {
+                path: '/incCredit',
+                component: incCredit,
+            },
+            {
+                path: '/createFactory',
+                component: createFactory,
+            },
+            {
+                path: '/createGov',
+                component: createGov,
+            }]
+    },
+    //gov
+    {
+        path: '/home_gov',
+        component: home_factory,
+        name: '',
+        children: [{
+            path: '',
+            component: dashboard,
+            meta: [],
+        },{
+            path: '/issueCredit',
+            component: issueCredit,
+            meta: ['积分管理', '积分发放'],
+        },
+            {
+                path: '/transferCredit',
+                component: transferCredit,
+                meta: ['积分管理', '积分转账'],
+            },
+
+            {
+                path: '/creditQuery',
+                component: creditQuery,
+                meta: ['积分管理', '积分查询'],
+            },
+            {
+                path: '/queryModel',
+                component: queryModel,
+                meta: ['查询模板', '查询模板'],
+            },
+            {
+                path: '/createModel',
+                component: createModel,
+                meta: ['创建模板', '创建模板'],
+            },
+            {
+                path: '/sensorQuery',
+                component: sensorQuery,
+                meta: [],
+            },
+            {
+                path: '/incCredit',
+                component: incCredit,
+            },
+            {
+                path: '/createFactory',
+                component: createFactory,
+            },
+            {
+                path: '/createGov',
+                component: createGov,
+            },
+            {
+                path: '/gov_Listsensor',
+                component: gov_Listsensor,
+            }
+        ]
+    },
     /* 模型测试 */
     {
         path: '/queryModel',

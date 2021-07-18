@@ -7,9 +7,13 @@
                             <s>最新消息</s>
                         </div>
                         <el-carousel height="300px" :autoplay="false" >
-                            <el-carousel-item :autoplay="false" class="lun_imgs"  v-for="item in items" v-bind:key="item.url">
-                                <img :src="item.url" style="height: 100%; width: 100%; position: relative"/>
-
+                            <el-carousel-item
+                                :autoplay="false" class="lun_imgs"
+                                v-for="item in items"
+                                v-bind:key="item.url">
+                                <a :href="item.link">
+                                    <img :src="item.url" style="height: 100%; width: 100%; position: relative"/>
+                                </a>
                             </el-carousel-item>
                         </el-carousel>
                     </section>
@@ -95,7 +99,8 @@ export default {
                                     message: '登录成功'
                                 });
                                 console.log(res.data.token);
-                                _this.changeLogin({ Authorization: res.data.token});
+                                var username = "whx";
+                                _this.changeLogin({ Authorization: res.data.token,username: username});
                                 this.$router.push('home');
                             } else {
                                 this.$message({

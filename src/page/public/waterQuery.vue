@@ -9,11 +9,21 @@
                 <el-form-item label="地址">
                     <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
                 </el-form-item>
-                <el-form-item label="开始时间">
-                    <el-input v-model="queryForm.begin" placeholder="开始时间"></el-input>
-                </el-form-item>
-                <el-form-item label="结束时间">
-                    <el-input v-model="queryForm.end" placeholder="结束时间"></el-input>
+                <el-form-item label="时间区间">
+                    <el-date-picker
+                        v-model="queryForm.begin"
+                        align="right"
+                        type="date"
+                        placeholder="开始时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
+                    <el-date-picker
+                        v-model="queryForm.end"
+                        align="right"
+                        type="date"
+                        placeholder="结束时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit('queryForm')">查询</el-button>
@@ -27,20 +37,20 @@
                   <p>{{dataText}}</p>
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
-                <el-table-column property="factory" label="工厂" width="120"></el-table-column>
-                <el-table-column property="sensorId" label="传感器id" width="90"></el-table-column>
-                <el-table-column property="time" label="监测时间" width="160"></el-table-column>
-                <el-table-column property="val0" label="ph" width="80"></el-table-column>
-                <el-table-column property="val1" label="chroma" width="80"></el-table-column>
-                <el-table-column property="val2" label="ss" width="80"></el-table-column>
-                <el-table-column property="val3" label="bod5" width="80"></el-table-column>
-                <el-table-column property="val4" label="cod" width="80"></el-table-column>
-                <el-table-column property="val5" label="an" width="80"></el-table-column>
-                <el-table-column property="val6" label="tn" width="80"></el-table-column>
-                <el-table-column property="val7" label="tp" width="80"></el-table-column>
-                <el-table-column property="val8" label="vp" width="80"></el-table-column>
-                <el-table-column property="val9" label="toc" width="80"></el-table-column>
-                
+                <el-table-column property="factory" label="工厂" width="flex"></el-table-column>
+                <el-table-column property="sensorId" label="传感器id" width="flex"></el-table-column>
+                <el-table-column property="time" label="监测时间" width="flex"></el-table-column>
+                <el-table-column property="val0" label="ph" width="flex"></el-table-column>
+                <el-table-column property="val1" label="chroma" width="flex"></el-table-column>
+                <el-table-column property="val2" label="ss" width="flex"></el-table-column>
+                <el-table-column property="val3" label="bod5" width="flex"></el-table-column>
+                <el-table-column property="val4" label="cod" width="flex"></el-table-column>
+                <el-table-column property="val5" label="an" width="flex"></el-table-column>
+                <el-table-column property="val6" label="tn" width="flex"></el-table-column>
+                <el-table-column property="val7" label="tp" width="flex"></el-table-column>
+                <el-table-column property="val8" label="vp" width="flex"></el-table-column>
+                <el-table-column property="val9" label="toc" width="flex"></el-table-column>
+
             </el-table>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination
@@ -75,8 +85,34 @@
                     address: '',
                     begin:   '',
                     end:     ''
-                }
+                },
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now();
+                    },
+                    shortcuts: [{
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
             }
+
         },
     	components: {
     		headTop,
@@ -95,7 +131,7 @@
                 catch(err) {
                     this.dataText = '获取数据失败' +  err;
                 }
-            }, 
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },
@@ -133,7 +169,7 @@
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
-                } 
+                }
                 else {
                     this.dataText = "数据加载异常" + res.rspMsg;
                 }

@@ -83,7 +83,7 @@
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
                         let res = await createFactory({object: this.createForm.object, password: this.createForm.password, realname: this.createForm.realname, address: this.createForm.address});
-                        if (res.rspCode == '000000') {
+                        if (res.rspCode == '0') {
                                 this.$message({
                                 type: 'success',
                                 message: '创建成功'

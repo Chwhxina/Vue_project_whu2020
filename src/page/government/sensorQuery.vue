@@ -10,15 +10,20 @@
                     <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
                 </el-form-item>
                 <el-form-item label="时间区间">
-                <el-date-picker
-                    v-model="value2"
-                    type="datetimerange"
-                    :picker-options="pickerOptions"
-                    range-separator="至"
-                    start-placeholder="开始日期"
-                    end-placeholder="结束日期"
-                    align="right">
-                </el-date-picker>
+                    <el-date-picker
+                        v-model="queryForm.begin"
+                        align="right"
+                        type="date"
+                        placeholder="开始时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
+                    <el-date-picker
+                        v-model="queryForm.end"
+                        align="right"
+                        type="date"
+                        placeholder="结束时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit('queryForm')">查询</el-button>
@@ -73,29 +78,27 @@
                 },
                 //时间选择器
                 pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now();
+                    },
                     shortcuts: [{
-                        text: '最近一周',
+                        text: '今天',
                         onClick(picker) {
-                            const end = new Date();
-                            const start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-                            picker.$emit('pick', [start, end]);
+                            picker.$emit('pick', new Date());
                         }
                     }, {
-                        text: '最近一个月',
+                        text: '昨天',
                         onClick(picker) {
-                            const end = new Date();
-                            const start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-                            picker.$emit('pick', [start, end]);
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
                         }
                     }, {
-                        text: '最近三个月',
+                        text: '一周前',
                         onClick(picker) {
-                            const end = new Date();
-                            const start = new Date();
-                            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-                            picker.$emit('pick', [start, end]);
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
                         }
                     }]
                 },
@@ -111,7 +114,7 @@
             async initData(){
                 this.dataText = '请选择查询条件,单击查询按钮查询';
             },
-            onSubmit() {
+            onSubmit(querryName) {
                 try {
                     this.getMessages();
                 }
@@ -138,7 +141,7 @@
                 }
                 let res = await getWaterMessageList(queryData);*/
                 let res = await sensorQuery({factory: this.queryForm.factory, address: this.queryForm.address, begin: this.queryForm.begin, end: this.queryForm.end});
-                if (res.rspCode == '000000') {
+                if (res.rspCode == '0') {
                     var messageList = res.rspData.messageList ;
                     this.count = messageList.length;
                     this.tableData = [];

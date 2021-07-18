@@ -2,7 +2,7 @@
     <div class="fillcontain">
         <head-top></head-top>
         <div class="table_container">
-            
+
             <el-form :model="createForm" ref="createForm" :rules="rules" class="createForm">
                 <el-form-item label="账户" prop="object">
                     <el-input v-model="createForm.object" placeholder="请输入账户名"></el-input>
@@ -23,14 +23,6 @@
                     <el-button type="primary" @click="onSubmit('createForm')">创建</el-button>
                 </el-form-item>
             </el-form>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination
-                  @size-change="handleSizeChange"
-                  @current-change="handleCurrentChange"
-                  :current-page="currentPage"
-                  :page-size="200"
-                </el-pagination>
-            </div>
         </div>
     </div>
 </template>
@@ -44,7 +36,7 @@
             var validatePass = (rule, value, callback) => {
                 if (value !== this.createForm.password) {
                     callback(new Error('两次输入密码不一致!'));
-                } 
+                }
                 else {
                     callback();
                 }
@@ -65,7 +57,7 @@
                         { required: true, message: '请输入密码', trigger: 'blur' }
                     ],
                     confirm:  [
-                        { required: true, message: '请再次输入密码', trigger: 'blur' }, 
+                        { required: true, message: '请再次输入密码', trigger: 'blur' },
                         { validator: validatePass, trigger: "blur" }
                     ],
                     realname: [
@@ -104,7 +96,7 @@
                                 message: res.rspMsg
                             });
                         }
-                    } 
+                    }
                     else {
                         this.$notify.error({
                             title: '错误',

@@ -2,22 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d679c40-9f58-4dce-a5d5-1523c569af8b" name="默认变更列表" comment="7-18:9:00am">
-      <change afterPath="$PROJECT_DIR$/src/assets/svg/图1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/svg/图2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/svg/图3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/svg/图4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/factory/factory_queryLog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/government/Listsensor.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/home_factory.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/page/home_gov.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/headTop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/headTop.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/admin/createGov.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/admin/createGov.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/dashboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/admin/createFactory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/admin/createFactory.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/government/createFactory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/createFactory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/government/creditQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/creditQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/government/incCredit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/incCredit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/government/sensorQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/sensorQuery.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/login_factory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login_factory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/login_gov.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/login_gov.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/public/waterQuery.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/public/waterQuery.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <list id="1bbe3470-24c2-4125-900f-791343578be2" name="revert" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +59,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -118,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626571025961</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="7-18:9:00am">
+      <created>1626592550834</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626592550834</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
