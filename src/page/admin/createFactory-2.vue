@@ -28,7 +28,7 @@
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
                   :current-page="currentPage"
-                  :page-size="200">
+                  :page-size="200"
                 </el-pagination>
             </div>
         </div>
@@ -89,15 +89,15 @@
                 let _this = this;
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
-                        let res = await createFactory({account: this.createForm.object, password: this.createForm.password, name: this.createForm.realname, address: this.createForm.address});
-                        if (res.rspCode == "0") {
+                        let res = await createFactory({object: this.createForm.object, password: this.createForm.password, realname: this.createForm.realname, address: this.createForm.address});
+                        if (res.rspCode == '000000') {
                                 this.$message({
                                 type: 'success',
                                 message: '创建成功'
                             });
                             console.log(res.rspData.token);
                             //_this.changeLogin({ Authorization: res.rspData.token});
-                            //this.$router.push('login_factory');
+                            //this.$router.push('login');
                         } else {
                             this.$message({
                                 type: 'error',

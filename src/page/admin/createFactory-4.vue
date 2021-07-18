@@ -95,9 +95,9 @@
                                 type: 'success',
                                 message: '创建成功'
                             });
-                            console.log(res.rspData.token);
+                            //console.log(res.rspData.token);
                             //_this.changeLogin({ Authorization: res.rspData.token});
-                            //this.$router.push('login_factory');
+                            //this.$router.push('login');
                         } else {
                             this.$message({
                                 type: 'error',

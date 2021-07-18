@@ -4,7 +4,7 @@ import { baseAxios } from '@/utils/axios'
  * 登陆
  */
 export const login = (data) => {
-	return baseAxios.post('/api/auth/login', data).then(result => {
+	return baseAxios.post('/api/user/login', data).then(result => {
 		return result.data
 	})
 }
@@ -13,7 +13,7 @@ export const login = (data) => {
  * 注册(新增)
  */
 export const register = (data) => {
-	return baseAxios.put('/api/auth/register', data).then(result => {
+	return baseAxios.post('/api/user/register', data).then(result => {
 		return result.data
 	})
 }
@@ -22,7 +22,7 @@ export const register = (data) => {
  * 获取水质信息列表(新增)
  */
 export const getWaterMessageList = (data) => {
-	return baseAxios.get('/api/sensor/messagelist', data).then(result => {
+	return baseAxios.post('/api/sensor/queryData', data).then(result => {
 		return result.data
 	})
 }
@@ -31,7 +31,7 @@ export const getWaterMessageList = (data) => {
  * 添加政府实体(新增)
  */
 export const createGovernment = (data) => {
-	return baseAxios.put('/api/addgov', data).then(result => {
+	return baseAxios.post('/api/user/governmentRegister', data).then(result => {
 		return result.data
 	})
 }
@@ -40,7 +40,7 @@ export const createGovernment = (data) => {
  * 添加工厂实体(新增)
  */
 export const createFactory = (data) => {
-	return baseAxios.put('/api/addgov', data).then(result => {
+	return baseAxios.post('/api/user/factoryRegister', data).then(result => {
 		return result.data
 	})
 }
@@ -49,7 +49,7 @@ export const createFactory = (data) => {
  * 添加传感器记录(新增)
  */
 export const incCredit = (data) => {
-	return baseAxios.put('/api/addgov', data).then(result => {
+	return baseAxios.put('/api/sensor/addLog', data).then(result => {
 		return result.data
 	})
 }
@@ -58,16 +58,45 @@ export const incCredit = (data) => {
  * 查询传感器记录(新增)
  */
 export const sensorQuery = (data) => {
-	return baseAxios.put('/api/addgov', data).then(result => {
+	return baseAxios.get('/api/sensor/queryLog', data).then(result => {
 		return result.data
 	})
 }
 
 /**
- * 查询积分(新)
+ * 查询积分-政府(新)
  */
 export const creditQuery = (data) => {
-	return baseAxios.put('/api/addgov', data).then(result => {
+	return baseAxios.get('/api/score/list', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询积分-工厂(新)
+ */
+export const creditQuery_ = (data) => {
+	return baseAxios.get('/api/score/listfactory', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询所有工厂的传感器(新增)
+ */
+export const getAllSensor = () => {
+	return baseAxios.get('/api/sensor/listSensor').then(result => {
+		return result.data
+	})
+}
+
+/*----------------------------------------*/
+
+/**
+ * 添加传感器日志(新增)
+ *//*
+export const getSensorLog = () => {
+	return baseAxios.get('/api/sensor/addLog').then(result => {
 		return result.data
 	})
 }

@@ -7,7 +7,7 @@
                     <el-input v-model="queryForm.factory" placeholder="工厂名称"></el-input>
                 </el-form-item>
                 <el-form-item label="地址">
-                    <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
+                    <el-input v-model="queryForm.sensorId" placeholder="工厂地址"></el-input>
                 </el-form-item>
                 <el-form-item label="开始时间">
                     <el-input v-model="queryForm.begin" placeholder="开始时间"></el-input>
@@ -28,7 +28,7 @@
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
                 <el-table-column property="factory" label="工厂" width="120"></el-table-column>
-                <el-table-column property="address" label="传感器" width="90"></el-table-column>
+                <el-table-column property="sensorId" label="传感器" width="90"></el-table-column>
                 <el-table-column property="time" label="提交时间" width="160"></el-table-column>
                 <el-table-column property="val0" label="日志记录" width="80"></el-table-column>
             </el-table>
@@ -62,7 +62,7 @@
                 currentPage: 1,
                 queryForm: {
                     factory: '',
-                    address: '',
+                    sensorId: '',
                     begin:   '',
                     end:     ''
                 }
@@ -97,22 +97,15 @@
             async getMessages(){
                 this.dataText = "正在加载蚂蚁链数据,请稍后...";
                 console.log(this.queryForm);
-                /*var queryData = {
-                    factory: this.queryForm.factory,
-                    address: this.queryForm.address,
-                    begin: this.queryForm.begin,
-                    end: this.queryForm.end,
-                }
-                let res = await getWaterMessageList(queryData);*/
-                let res = await sensorQuery({factory: this.queryForm.factory, address: this.queryForm.address, begin: this.queryForm.begin, end: this.queryForm.end});
-                if (res.rspCode == '000000') {
+                let res = await sensorQuery({factoryName: this.queryForm.factory, sensorId: this.queryForm.sensorId});
+                if (res.rspCode == '0') {
                     var messageList = res.rspData.messageList ;
                     this.count = messageList.length;
                     this.tableData = [];
                     messageList.forEach(item => {
                         const tableData = {};
                         tableData.factory = item.factory;
-                        tableData.address = item.address;
+                        tableData.sensorId = item.sensorId;
                         tableData.time = item.time;
                         tableData.val0 = item.val0;
                         this.tableData.push(tableData);

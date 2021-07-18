@@ -40,6 +40,7 @@ const createFactory = r => require.ensure([], () => r(require('@/page/admin/crea
 const incCredit = r => require.ensure([], () => r(require('@/page/government/incCredit')), 'createGov');
 const sensorQuery = r => require.ensure([], () => r(require('@/page/government/sensorQuery')), 'sensorQuery');
 const creditQuery = r => require.ensure([], () => r(require('@/page/government/creditQuery')), 'creditQuery');
+const getAllSensor = r => require.ensure([], () => r(require('@/page/government/getAllSensor')), 'getAllSensor');
 
 const routes = [
     /* Index (登录) */
@@ -178,6 +179,10 @@ const routes = [
     {
         path: '/government/creditQuery',
         component: creditQuery,
+    },
+    {
+        path: '/government/getAllSensor',
+        component: getAllSensor,
     },
 ]
 

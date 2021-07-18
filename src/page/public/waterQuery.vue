@@ -9,11 +9,21 @@
                 <el-form-item label="地址">
                     <el-input v-model="queryForm.address" placeholder="工厂地址"></el-input>
                 </el-form-item>
-                <el-form-item label="开始时间">
-                    <el-input v-model="queryForm.begin" placeholder="开始时间"></el-input>
-                </el-form-item>
-                <el-form-item label="结束时间">
-                    <el-input v-model="queryForm.end" placeholder="结束时间"></el-input>
+                <el-form-item label="时间区间">
+                    <el-date-picker
+                        v-model="queryForm.begin"
+                        align="right"
+                        type="date"
+                        placeholder="开始时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
+                    <el-date-picker
+                        v-model="queryForm.end"
+                        align="right"
+                        type="date"
+                        placeholder="结束时间"
+                        :picker-options="pickerOptions">
+                    </el-date-picker>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="onSubmit('queryForm')">查询</el-button>
@@ -28,7 +38,7 @@
                 </template>
                 <el-table-column type="index" width="50"></el-table-column>
                 <el-table-column property="factory" label="工厂" width="120"></el-table-column>
-                <el-table-column property="sensorId" label="传感器id" width="90"></el-table-column>
+                <el-table-column property="sensorId" label="传感器id" width="100"></el-table-column>
                 <el-table-column property="time" label="监测时间" width="160"></el-table-column>
                 <el-table-column property="val0" label="ph" width="80"></el-table-column>
                 <el-table-column property="val1" label="chroma" width="80"></el-table-column>
@@ -75,7 +85,32 @@
                     address: '',
                     begin:   '',
                     end:     ''
-                }
+                },
+                pickerOptions: {
+                    disabledDate(time) {
+                        return time.getTime() > Date.now();
+                    },
+                    shortcuts: [{
+                        text: '今天',
+                        onClick(picker) {
+                            picker.$emit('pick', new Date());
+                        }
+                    }, {
+                        text: '昨天',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24);
+                            picker.$emit('pick', date);
+                        }
+                    }, {
+                        text: '一周前',
+                        onClick(picker) {
+                            const date = new Date();
+                            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                            picker.$emit('pick', date);
+                        }
+                    }]
+                },
             }
         },
     	components: {
@@ -107,29 +142,36 @@
             async getMessages(){
                 this.dataText = "正在加载蚂蚁链数据,请稍后...";
                 console.log(this.queryForm);
-                let res = await getWaterMessageList({factory: this.queryForm.factory, address: this.queryForm.address, begin: this.queryForm.begin, end: this.queryForm.end});
-                if (res.rspCode == '000000') {
-                    var messageList = res.rspData.messageList ;
-                    this.count = messageList.length;
+                let res = await getWaterMessageList({factoryName: this.queryForm.factory, address: this.queryForm.address, startTime: this.queryForm.begin, endTime: this.queryForm.end});
+                if (res.rspCode == '0') {
+                    var dataPack = res.data;
                     this.tableData = [];
-                    messageList.forEach(item => {
-                        const tableData = {};
-                        tableData.factory = item.factory;
-                        tableData.sensorId = item.sensorId;
-                        tableData.val0 = item.val0;
-                        tableData.time = item.time;
-                        tableData.val1 = item.val1;
-                        tableData.val2 = item.val2;
-                        tableData.val3 = item.val3;
-                        tableData.val4 = item.val4;
-                        tableData.val5 = item.val5;
-                        tableData.val6 = item.val6;
-                        tableData.val7 = item.val7;
-                        tableData.val8 = item.val8;
-                        tableData.val9 = item.val9;
-                        this.tableData.push(tableData);
+                    dataPack.forEach(record => {
+                        var factoryName = record.factoryName;
+                        //var factory = record.factoryName;
+                        var factory = factoryName.substr(0, factoryName.lastIndexOf("_"));
+                        var sensorId = factoryName.substr(factoryName.lastIndexOf("_") + 1);
+                        var data = record.data;
+                        data.forEach(item => {
+                            const tableData = {};
+                            tableData.factory = factory;
+                            //tableData.sensorId = item.sensorId;
+                            tableData.sensorId = sensorId;
+                            tableData.time = item.createTime;
+                            tableData.val0 = item.ph;
+                            tableData.val1 = item.chroma;
+                            tableData.val2 = item.ss;
+                            tableData.val3 = item.bod5;
+                            tableData.val4 = item.cod;
+                            tableData.val5 = item.an;
+                            tableData.val6 = item.tn;
+                            tableData.val7 = item.tp;
+                            tableData.val8 = item.vp;
+                            tableData.val9 = item.toc;
+                            this.tableData.push(tableData);
+                            this.count++;
+                        })
                     })
-
                     if (this.tableData.length === 0) {
                         this.dataText = "暂无数据";
                     }
@@ -146,6 +188,6 @@
 	@import '../../style/mixin';
     .table_container{
         padding: 20px;
-        .wh(1220px, 600px);
+        .wh(1230px, 600px);
     }
 </style>

@@ -19,7 +19,7 @@
                 <transition name="form-fade" mode="in-out">
                     <section class="form_contianer" v-show="showLogin" style="opacity: 70%">
                         <div class="manage_tip">
-                            <p>武大蚂蚁链食品朔源系统</p>
+                            <p>工厂污水监测系统</p>
                         </div>
                         <el-row :gutter="5">
                             <el-col :span="12" type="flex" ><router-link to="/"><div class="grid-content bg-purple-dark">用户</div></router-link></el-col>
@@ -80,7 +80,7 @@ export default {
             let _this = this;
             this.$refs[formName].validate(async (valid) => {
                 if (valid) {
-                    login({name: this.loginForm.username, password: this.loginForm.password})
+                    login({account: this.loginForm.username, password: this.loginForm.password})
                         .then(res => {
                             if (res.rspCode == '0') {
                                 this.$message({
@@ -89,7 +89,7 @@ export default {
                                 });
                                 console.log(res.data.token);
                                 _this.changeLogin({ Authorization: res.data.token});
-                                this.$router.push('home');
+                                this.$router.push('public/waterQuery');
                             } else {
                                 this.$message({
                                     type: 'error',

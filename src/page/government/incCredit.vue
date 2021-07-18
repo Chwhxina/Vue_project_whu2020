@@ -25,7 +25,7 @@
                   @size-change="handleSizeChange"
                   @current-change="handleCurrentChange"
                   :current-page="currentPage"
-                  :page-size="200"
+                  :page-size="200">
                 </el-pagination>
             </div>
         </div>
@@ -73,8 +73,8 @@
                 let _this = this;
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
-                        let res = await incCredit({object: this.createForm.object, sensorId: this.createForm.sensorId, describe: this.createForm.describe, point: this.createForm.point});
-                        if (res.rspCode == '000000') {
+                        let res = await incCredit({factoryName: this.createForm.object, sensorId: this.createForm.sensorId, description: this.createForm.describe, num: this.createForm.point});
+                        if (res.rspCode == '0') {
                                 this.$message({
                                 type: 'success',
                                 message: '提交成功'
