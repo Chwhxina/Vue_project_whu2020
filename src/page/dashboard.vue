@@ -1,32 +1,50 @@
 <template>
     <div>
-        <head-top></head-top>
-        <section class="data_section">
-            <header class="section_title">合约所有者</header>
-            <el-row :gutter="24">
-                <el-col :span="24"><div class="data_list">账户ID: {{goodsOwner}}</div></el-col>
-            </el-row>
-            <el-row :gutter="24">
-                <el-col :span="24"><div class="data_list">合约ID: {{goodContractId}}</div></el-col>
-            </el-row>
-        </section>
+        <el-carousel indica tor-position="outside" height="600px" >
+            <el-carousel-item v-for="item in 4" :key="item">
+                <div class="block" v-for="fit in fits" :key="fit">
+                    <span class="demonstration">{{ fit }}</span>
+                    <el-image
+                        style="width: 100px; height: 100px"
+                        :src="url"
+                        :fit="fit"></el-image>
+                </div>
+            </el-carousel-item>
+        </el-carousel>
 
-        <section class="data_section">
-            <header class="section_title">物品信息</header>
-            <el-row :gutter="24">
-                <el-col :span="8"><div class="data_list">物品: <span class="data_num">{{goodsName}}</span></div></el-col>
-                <el-col :span="8"><div class="data_list">价格: <span class="data_num">{{goodsPrice}} 元</span></div></el-col>
-                <el-col :span="8"><div class="data_list">重量: <span class="data_num">{{goodsWeight}} 克</span></div></el-col>
+        <div id="app">
+
+            <el-row style="height:250px;background:#eeeeee" type="flex" justify="center" >
+                <el-col :span="15">
+                    <br>
+                    <h1 style="font-size:50px" >我们是"水质卫士"</h1>
+                    <div style="height: 20px"></div>
+                    <p>通过区块链+物联网技术，将工厂的排放数据实时上链。通过这种方式，我们可以实时、可信的保障居民水质健康，让污染工厂"无处可逃"的同时给予优质环保的工厂以奖励</p>
+                    <div style="height: 10px"></div>
+                    <el-button type="primary">了解更多 >></el-button>
+                    <br>
+                </el-col>
             </el-row>
-        </section>
-		<section class="data_section">
-			<header class="section_title">朔源信息数据统计</header>
-            <el-row :gutter="24">
-                <el-col :span="8"><div class="data_list"><span class="data_num">{{allLogisticCount}}</span> 交易环节(点)</div></el-col>
-                <el-col :span="8"><div class="data_list"><span class="data_num">{{allAttributeCount}}</span> 属性(个)</div></el-col>
-                <el-col :span="8"><div class="data_list"><span class="data_num">{{allMessageCount}}</span> 消费留言(条)</div></el-col>
+
+
+            <el-row style="background:#eeeeee" type="flex" justify="center" >
+                <el-col :span="18">
+                    <el-card style="background: #cad2ee" v-for="heading in headings" :key=heading>
+                        <h2>{{heading}}</h2>
+
+                        <el-button size="small">View details >></el-button>
+                    </el-card>
+                </el-col>
             </el-row>
-		</section>
+
+
+            <el-row style="background:#eeeeee" type="flex" justify="center" >
+                <el-col :span="15" >
+                    <el-divider></el-divider>
+                    <p>© 2020 Company, Inc.</p>
+                </el-col>
+            </el-row>
+        </div>
     </div>
 </template>
 
@@ -35,16 +53,14 @@
 	import {getGoodsStatis,getGoodsInfo} from '@/api/getData'
     export default {
     	data(){
-    		return {
-    			allLogisticCount: null,
-    			allAttributeCount: null,
-                allMessageCount: null,
-                goodsName: null,
-                goodsPrice: null,
-                goodsWeight: null,
-                goodsOwner:null,
-                goodContractId:null,
-    		}
+    	    return{
+            activeIndex: '1',
+                activeIndex2: '1',
+                headings:['水质查询','工厂信息','传感器', '最新消息','合作联系'],
+                welcome: 'Vue.js,Element-UI',
+                pj_name: 'Project Name',
+                item: []
+            };
     	},
     	components: {
     		headTop

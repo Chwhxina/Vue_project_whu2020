@@ -22,7 +22,7 @@ const messageList = r => require.ensure([], () => r(require('@/page/messageList'
 const addMessage = r => require.ensure([], () => r(require('@/page/addMessage')), 'addMessage');
 const explain = r => require.ensure([], () => r(require('@/page/explain')), 'explain');
 
-const creditQuery = r => require.ensure([], () => r(require('@/page/creditQuery')), 'creditQuery');
+const sensorQuery = r => require.ensure([], () => r(require('@/page/sensorQuery')), 'sensorQuery');
 const transferCredit = r => require.ensure([], () => r(require('@/page/transferCredit')), 'transferCredit');
 const issueCredit = r => require.ensure([], () => r(require('@/page/issueCredit')), 'issueCredit');
 
@@ -94,9 +94,9 @@ const routes = [
 			meta: ['积分管理', '积分转账'],
 		},
 		{
-			path: '/creditQuery',
-			component: creditQuery,
-			meta: ['积分管理', '积分查询'],
+			path: '/sensorQuery',
+			component: sensorQuery,
+			meta: [],
 		}]
 	}
 ]
@@ -108,7 +108,7 @@ const router = new Router({
 });
 
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
   if (to.path === '/' || to.path === '/login' || to.path === '/login_factory' || to.path === '/login_gov' || to.path === '/register') {
     next();
   } else {
@@ -119,6 +119,6 @@ router.beforeEach((to, from, next) => {
       next();
     }
   }
-});
+});*/
 
 export default router;
