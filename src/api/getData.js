@@ -4,7 +4,7 @@ import { baseAxios } from '@/utils/axios'
  * 登陆
  */
 export const login = (data) => {
-	return baseAxios.post('/api/auth/login', data).then(result => {
+	return baseAxios.post('/api/user/login', data).then(result => {
 		return result.data
 	})
 }
@@ -12,8 +12,96 @@ export const login = (data) => {
 /**
  * 注册(新增)
  */
+export const register = (data) => {
+	return baseAxios.post('/api/user/register', data).then(result => {
+		return result.data
+	})
+}
 
-export const register = data => fetch('/api/auth/register', data, 'PUT');
+/**
+ * 获取水质信息列表(新增)
+ */
+export const getWaterMessageList = (data) => {
+	return baseAxios.post('/api/sensor/queryData', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加政府实体(新增)
+ */
+export const createGovernment = (data) => {
+	return baseAxios.post('/api/user/governmentRegister', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加工厂实体(新增)
+ */
+export const createFactory = (data) => {
+	return baseAxios.post('/api/user/factoryRegister', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 添加传感器记录(新增)
+ */
+export const incCredit = (data) => {
+	return baseAxios.put('/api/sensor/addLog', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询传感器记录(新增)
+ */
+export const sensorQuery = (data) => {
+	return baseAxios.post('/api/sensor/queryLog', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询积分-政府(新)
+ */
+export const creditQuery = (data) => {
+	return baseAxios.get('/api/score/list', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询积分-工厂(新)
+ */
+export const creditQuery_ = (data) => {
+	return baseAxios.get('/api/score/listfactory', data).then(result => {
+		return result.data
+	})
+}
+
+/**
+ * 查询所有工厂的传感器(新增)
+ */
+export const getAllSensor = () => {
+	return baseAxios.get('/api/sensor/listSensor').then(result => {
+		return result.data
+	})
+}
+
+/*----------------------------------------*/
+
+/**
+ * 添加传感器日志(新增)
+ *//*
+export const getSensorLog = () => {
+	return baseAxios.get('/api/sensor/addLog').then(result => {
+		return result.data
+	})
+}
+
+/*----------------------------------------*/
 
 /**
  * 朔源物品统计
@@ -102,6 +190,8 @@ export const addGuestMessage = (data) => {
 }
 
 
+
+
 /**
  * 获取用户信息
  */
@@ -117,7 +207,7 @@ export const getAdminInfo = () => {
  * 查询积分
  */
 
-export const queryCredit = () => {
+export const queryCredit = (data) => {
 	return baseAxios.get('/api/credit/query',data).then(result => {
 		return result.data
 	})

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 const state = {
 	Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : '',
+    username: localStorage.getItem('username') ? localStorage.getItem('username') : '',
 	adminInfo: {
 		avatar: 'default.jpg'
 	},
@@ -14,11 +15,16 @@ const state = {
 const mutations = {
 	changeLogin (state, user) {
       state.Authorization = user.Authorization;
+      state.username = user.username;
       localStorage.setItem('Authorization', user.Authorization);
+      localStorage.setItem('username', user.username);
     },
 	saveAdminInfo(state, adminInfo){
 		state.adminInfo = adminInfo;
-	}
+	},
+    getusername(){
+	    return state.username;
+    }
 }
 
 const actions = {

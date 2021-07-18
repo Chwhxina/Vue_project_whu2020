@@ -1,14 +1,19 @@
 <template>
     <div class="login_page fillcontain">
         <el-container>
-                <el-aside width="300px">
-                    <section class="carousel_contianer">
+                <el-aside width="400px">
+                    <section class="carousel_container">
                         <div class="manage_tip1">
                             <s>最新消息</s>
                         </div>
-                        <el-carousel height="300px">
-                            <el-carousel-item v-for="item in 4" :key="item">
-                                <h3 class="small">{{ item }}</h3>
+                        <el-carousel height="300px" :autoplay="false" >
+                            <el-carousel-item
+                                :autoplay="false" class="lun_imgs"
+                                v-for="item in items"
+                                v-bind:key="item.url">
+                                <a :href="item.link">
+                                    <img :src="item.url" style="height: 50%; width: 50%; position: relative"/>
+                                </a>
                             </el-carousel-item>
                         </el-carousel>
                     </section>
@@ -19,7 +24,7 @@
                 <transition name="form-fade" mode="in-out">
                     <section class="form_contianer" v-show="showLogin" style="opacity: 70%">
                         <div class="manage_tip">
-                            <p>武大蚂蚁链食品朔源系统</p>
+                            <p>工厂污水监测系统</p>
                         </div>
                         <el-row :gutter="5">
                             <el-col :span="12" type="flex" ><router-link to="/"><div class="grid-content bg-purple-dark">用户</div></router-link></el-col>
@@ -54,6 +59,12 @@
 export default {
     data(){
         return {
+            items: [
+                {url: require('../assets/svg/图1.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图2.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图3.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'},
+                {url: require('../assets/svg/图4.png'), link: 'http://www.mee.gov.cn/zcwj/zcjd/202101/t20210129_819522.shtml'}
+            ],
             loginForm: {
                 account: '',
                 password: '',
@@ -76,11 +87,12 @@ export default {
     },
     methods: {
         ...mapMutations(['changeLogin']),
+        ...mapMutations(['getusername']),
         async submitForm(formName) {
             let _this = this;
             this.$refs[formName].validate(async (valid) => {
                 if (valid) {
-                    login({name: this.loginForm.username, password: this.loginForm.password})
+                    login({account: this.loginForm.username, password: this.loginForm.password})
                         .then(res => {
                             if (res.rspCode == '0') {
                                 this.$message({
@@ -88,7 +100,7 @@ export default {
                                     message: '登录成功'
                                 });
                                 console.log(res.data.token);
-                                _this.changeLogin({ Authorization: res.data.token});
+                                _this.changeLogin({ Authorization: res.data.token, username: this.loginForm.username});
                                 this.$router.push('home');
                             } else {
                                 this.$message({
@@ -203,7 +215,7 @@ export default {
 .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
 }
-.carousel_contianer{
+.carousel_container{
     .wh(500px, 350px);
     .ctp(1000px, 350px);
     text-align: center;

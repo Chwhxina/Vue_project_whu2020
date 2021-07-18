@@ -3,8 +3,8 @@
         <el-container>
             <el-main>
                 <transition name="form-fade" mode="in-out">
-                    <section class="form_contianer" v-show="showLogin">
-                        <div class="manage_tip" style="opacity: initial">
+                    <section class="form_contianer" v-show="showLogin" style="opacity: 70%">
+                        <div class="manage_tip">
                             <p>武大蚂蚁链食品朔源系统</p>
                         </div>
                         <el-row :gutter="5">

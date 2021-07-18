@@ -81,7 +81,7 @@
             async getAttributes(){
                 this.dataText = "正在加载蚂蚁链数据,请稍后...";
                 const res = await getAttributeList();
-                if (res.rspCode == '000000') {
+                if (res.rspCode == '0') {
                   var attributeList = res.rspData.attributeList ;
                   this.count = attributeList.length;
                   this.tableData = [];
