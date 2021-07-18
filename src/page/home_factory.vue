@@ -17,8 +17,11 @@
                             2020新政策
                             </a>
                         </el-menu-item>
-                        <el-menu-item index="creditRecord">积分记录</el-menu-item>
-                        <el-menu-item index="sensorQuery">水质信息</el-menu-item>
+                        <el-menu-item index="factory_creditQuery">积分记录</el-menu-item>
+                        <el-menu-item index="factory_getAllsensor">传感器</el-menu-item>
+                        <el-menu-item index="factory_sensorQuery">传感器日志</el-menu-item>
+                        <el-menu-item index="factory_waterQuery">水质信息</el-menu-item>
+
                     </el-submenu>
                 </el-col>
                 <el-col :span="2">

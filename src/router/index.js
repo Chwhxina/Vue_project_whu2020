@@ -51,7 +51,10 @@ const gov_incCredit = r => require.ensure([], () => r(require('@/page/gov_incCre
 const gov_sensorQuery = r => require.ensure([], () => r(require('@/page/gov_sensorQuery')), 'gov_sensorQuery');
 const gov_waterQuery = r => require.ensure([], () => r(require('@/page/gov_waterQuery')), 'gov_waterQuery');
 
-
+const factory_creditQuery = r => require.ensure([], () => r(require('@/page/factory_creditQuery')), 'factory_creditQuery');
+const factory_getAllsensor = r => require.ensure([], () => r(require('@/page/factory_getAllsensor')), 'factory_getAllsensor');
+const factory_sensorQuery = r => require.ensure([], () => r(require('@/page/factory_sensorQuery')), 'factory_sensorQuery');
+const factory_waterQuery = r => require.ensure([], () => r(require('@/page/factory_waterQuery')), 'factory_waterQuery');
 
 
 const routes = [
@@ -230,7 +233,24 @@ const routes = [
             {
                 path: '/createGov',
                 component: createGov,
-            }]
+            },
+            {
+                path: '/factory_creditQuery',
+                component: factory_creditQuery,
+            },
+            {
+                path: '/factory_waterQuery',
+                component: factory_waterQuery,
+            },
+            {
+                path: '/factory_getAllsensor',
+                component: factory_getAllsensor,
+            },
+            {
+                path: '/factory_sensorQuery',
+                component: factory_sensorQuery,
+            }
+        ]
     },
     //gov
     {
